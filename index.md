@@ -1,91 +1,36 @@
-# Politique de confidentialité — ComoDelivery
+---
+title: ComoDelivery
+layout: default
+---
 
-**Dernière mise à jour : 2026-05-06**
+# ComoDelivery
 
-ComoDelivery (« nous », « notre », « nos ») exploite l'application mobile ComoDelivery (le « Service ») destinée à la livraison de cuisine comorienne aux Comores.
+**La cuisine comorienne livrée en 30 minutes.**
 
-Cette page vous informe de nos politiques relatives à la collecte, l'utilisation et la divulgation des données personnelles lorsque vous utilisez notre Service, ainsi que des choix qui s'offrent à vous concernant ces données.
+Mataba, langouste à la vanille, mkatra foutra, brochettes grillées… toute la richesse de la cuisine des Comores réunie dans une seule app, livrée à ta porte.
 
-## 1. Données que nous collectons
+## Ce que tu peux faire
 
-### Données fournies par l'utilisateur
-- **Numéro de téléphone** (+269 ou +33) — pour l'authentification par OTP SMS et le contact en cas de livraison.
-- **Nom complet** — affiché au livreur pour reconnaître le client.
-- **Adresse email** (restaurateurs uniquement) — pour la connexion à l'espace pro.
-- **Adresse de livraison** (description textuelle + GPS) — pour permettre au livreur de venir à domicile.
-- **Photo de profil** (optionnelle).
+- 🛵 **Commander des plats** auprès des meilleurs restaurants locaux
+- 📍 **Suivre ta livraison** en temps réel sur la carte
+- 💳 **Payer par carte** (Visa, Mastercard, Apple Pay, Google Pay) ou Mobile Money MVola
+- 🎟️ **Profiter de codes promo** réguliers selon ta zone
 
-### Données collectées automatiquement
-- **Géolocalisation précise** :
-  - **Client** : position au moment de la commande pour calculer les frais et délais.
-  - **Livreur** : position GPS toutes les 10 secondes pendant les courses actives uniquement, pour permettre le suivi temps réel par le client.
-- **Données techniques** : modèle de téléphone, OS, version d'app, identifiant push (Expo).
-- **Données de commande** : historique des commandes, montants, méthodes de paiement, notes laissées.
+## Pour qui
 
-### Photos et preuves de livraison
-- Le livreur peut prendre une photo du colis remis et obtenir la signature du client. Ces preuves sont stockées de manière sécurisée chez Supabase et liées à la commande pour résoudre les litiges éventuels.
+- **Clients** — découvre les restos autour de toi et fais-toi livrer en 30 min
+- **Restaurateurs** — propose tes plats à des milliers de clients aux Comores
+- **Livreurs** — gagne ta vie en livrant à ton rythme
 
-## 2. Comment nous utilisons les données
+## Téléchargement
 
-- Authentifier votre compte (OTP SMS, email/password)
-- Mettre en relation client / restaurant / livreur
-- Calculer les distances, temps de livraison, frais
-- Permettre le suivi temps réel des livraisons
-- Envoyer des notifications push de statut (commande acceptée, prête, livrée)
-- Traiter les paiements via Stripe (carte) ou Mobile Money (MVola)
-- Améliorer le service et résoudre les litiges
+L'app est en cours de finalisation pour une sortie sur **Google Play** et **App Store**. En attendant, contacte-nous sur WhatsApp au **+269 33 40 00 00**.
 
-## 3. Partage des données
+## Liens utiles
 
-- **Restaurants partenaires** : reçoivent votre nom, votre adresse de livraison et le détail de votre commande.
-- **Livreurs** : reçoivent votre nom, numéro de téléphone et adresse pour vous livrer.
-- **Stripe** : reçoit les données de paiement carte (jamais stockées chez nous).
-- **Telma / Comores Telecom** (paiement MVola) : reçoit le numéro de mobile pour la transaction.
-- **Supabase** : hébergement de la base de données et de l'authentification (eu-west-1).
-- **Expo / Apple / Google** : pour la livraison des notifications push.
+- 📄 [Politique de confidentialité](/privacy/)
+- 📧 [Contact support](mailto:como.delivery269@gmail.com)
 
-Nous ne vendons jamais vos données personnelles à des tiers.
+---
 
-## 4. Conservation des données
-
-- Données de compte : conservées tant que votre compte est actif. Suppression sur demande.
-- Commandes et preuves de livraison : 3 ans pour conformité fiscale.
-- Logs techniques : 30 jours.
-
-## 5. Sécurité
-
-- Authentification par OTP SMS ou email + mot de passe (bcrypt).
-- Communications chiffrées en TLS 1.2+.
-- Données sensibles isolées par RLS (Row-Level Security) Postgres : chaque utilisateur ne voit que ses propres données.
-- Paiements PCI-DSS via Stripe.
-
-## 6. Vos droits
-
-Conformément aux meilleures pratiques RGPD :
-
-- **Accès** : voir toutes vos données depuis l'écran Profil.
-- **Rectification** : modifier nom, photo, adresse depuis l'app.
-- **Suppression** : envoyer un email à `support@comodelivery.km` pour supprimer votre compte et toutes les données associées sous 30 jours.
-- **Portabilité** : recevoir un export JSON de vos commandes sur demande.
-- **Opposition** : vous pouvez désactiver les notifications push depuis les réglages du téléphone.
-
-## 7. Cookies & traceurs
-
-L'application n'utilise pas de cookies tiers. Elle stocke localement (sur votre téléphone uniquement) :
-- Token d'authentification (Expo SecureStore)
-- Préférences utilisateur (AsyncStorage)
-- Cache de navigation (TanStack Query)
-
-## 8. Mineurs
-
-Le Service n'est pas destiné aux mineurs de moins de 13 ans. Si nous découvrons qu'un mineur de moins de 13 ans nous a fourni des données, nous les supprimons sans délai.
-
-## 9. Modifications
-
-Nous pouvons mettre à jour cette politique. La date en haut indique la dernière révision. Les changements significatifs vous seront notifiés par push ou email.
-
-## 10. Contact
-
-Pour toute question : **support@comodelivery.km**
-
-ComoDelivery — Moroni, Grande Comore, Union des Comores
+*ComoDelivery — Service de livraison de cuisine pour les Comores. © 2026.*
