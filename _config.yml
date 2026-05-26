@@ -1,5 +1,11 @@
 title: ComoDelivery
-description: La cuisine comorienne livrée en 30 minutes — Moroni, Mutsamudu, Fomboni
+description: La cuisine comorienne livrée chez vous — Moroni, Mutsamudu, Fomboni
 theme: jekyll-theme-cayman
 lang: fr
 url: https://comodelivery.app
+
+# index.html (la home) bypass Jekyll : pas de front matter → servi tel quel.
+# Les pages privacy/cgu/cgv/delete-account restent en markdown + theme.
+exclude:
+  - README.md
+  - .gitignore
