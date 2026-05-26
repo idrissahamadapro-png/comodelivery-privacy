@@ -12,7 +12,8 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23D84315'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='white'%3E🛵%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/icon.png" />
 
   <title>ComoDelivery — Cuisine comorienne livrée chez vous</title>
 
@@ -111,15 +112,12 @@
       letter-spacing: -0.5px;
     }
     .logo .logo-mark {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--volcan) 0%, var(--volcan-dark) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      box-shadow: var(--shadow-volcan);
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(216, 67, 21, 0.2);
     }
     nav.topbar .links {
       display: flex;
@@ -943,7 +941,7 @@
   <nav class="topbar" id="topbar">
     <div class="container inner">
       <a href="/" class="logo">
-        <span class="logo-mark">🛵</span>
+        <img src="/assets/icon.png" alt="ComoDelivery" class="logo-mark" />
         ComoDelivery
       </a>
       <div class="links">
@@ -1270,7 +1268,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <span class="logo-mark">🛵</span>
+            <img src="/assets/icon.png" alt="ComoDelivery" class="logo-mark" />
             ComoDelivery
           </div>
           <p>Première plateforme de livraison de cuisine comorienne. Pour les Comores, fait par des Comoriens.</p>
