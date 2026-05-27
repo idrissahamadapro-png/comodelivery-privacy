@@ -12,10 +12,21 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="/assets/icon.png" />
+  <!-- Favicon multi-tailles pour compatibilité maximale (Chrome, Safari, iOS home, Android home) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon.png" />
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="ComoDelivery" />
+  <meta name="application-name" content="ComoDelivery" />
 
   <title>ComoDelivery — Cuisine comorienne livrée chez vous</title>
+
+  <!-- Vercel Web Analytics (s'active automatiquement une fois le site déployé
+       sur Vercel ; sur GitHub Pages le script 404 silencieusement, sans impact). -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
