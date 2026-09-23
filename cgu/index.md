@@ -5,18 +5,17 @@ layout: default
 
 # Conditions Générales d'Utilisation (CGU) — ComoDelivery
 
-**Dernière mise à jour : 2026-05-10**
+**Dernière mise à jour : 23 septembre 2026**
 
 Bienvenue sur ComoDelivery. Ces Conditions Générales d'Utilisation (« CGU ») régissent votre accès et votre utilisation de l'application mobile ComoDelivery (« le Service »). En créant un compte ou en utilisant le Service, vous acceptez sans réserve les présentes CGU.
 
 ## 1. Présentation du Service
 
-ComoDelivery est une plateforme de mise en relation entre :
-- des **clients** souhaitant commander des plats préparés,
-- des **restaurants partenaires** proposant ces plats,
-- des **livreurs partenaires** assurant la livraison à domicile.
+ComoDelivery vend, par l'intermédiaire de son application, des repas livrés à domicile aux Comores :
+- les repas sont **vendus par ComoDelivery** et préparés par des **restaurants partenaires**, qui les lui fournissent ;
+- la livraison est assurée par des **livreurs partenaires** indépendants.
 
-ComoDelivery agit comme intermédiaire technologique. Nous ne sommes ni le préparateur des repas, ni l'employeur des livreurs.
+ComoDelivery est votre unique interlocuteur pour vos commandes. Les conditions de vente sont détaillées dans nos [CGV](/cgv/).
 
 ## 2. Création et utilisation du compte
 
@@ -29,7 +28,7 @@ ComoDelivery agit comme intermédiaire technologique. Nous ne sommes ni le prép
 Vous êtes seul responsable de la confidentialité de vos identifiants. Toute activité réalisée depuis votre compte est présumée être de votre fait.
 
 ### Suppression du compte
-Vous pouvez supprimer votre compte à tout moment depuis l'application (Profil → Supprimer mon compte). La suppression est immédiate et irréversible. Vos commandes passées sont conservées sous forme anonymisée pour des raisons comptables et légales (5 ans).
+Vous pouvez supprimer votre compte à tout moment depuis l'application (Profil → Supprimer mon compte). La suppression est immédiate et irréversible. Vos commandes passées sont conservées sous forme anonymisée pendant 10 ans, durée légale de conservation des pièces comptables.
 
 ## 3. Utilisation acceptable
 
@@ -46,8 +45,8 @@ ComoDelivery se réserve le droit de suspendre ou résilier tout compte violant 
 ## 4. Commandes et livraisons
 
 - Une commande passée vaut **engagement de paiement**.
-- Le paiement est **autorisé** au moment du checkout (Stripe ou MVola). Les fonds sont **capturés à la livraison** uniquement.
-- En cas d'annulation avant livraison (par le restaurant, par un livreur indisponible, ou par auto-cancel ComoDelivery), le paiement est **automatiquement libéré** : aucun débit sur votre compte.
+- Le paiement par carte est **autorisé** au moment du checkout via Stripe. Il n'est **débité qu'à la livraison**.
+- En cas d'annulation avant livraison (par le restaurant, faute de livreur disponible ou par annulation automatique), le paiement est **automatiquement libéré** : aucun débit sur votre compte.
 - Le délai de livraison annoncé (30 minutes en moyenne) est indicatif et dépend de facteurs externes (trafic, météo, charge de la cuisine).
 - Vous devez être joignable au numéro fourni pendant la livraison.
 
@@ -61,7 +60,7 @@ Si un problème survient (commande non reçue, plat erroné, plat froid, etc.) :
 
 ## 6. Espace restaurateur et livreur
 
-L'inscription comme restaurateur ou livreur partenaire est soumise à validation manuelle de notre équipe (24-48h après dépôt du dossier). Les rémunérations, commissions et engagements sont régis par un contrat séparé que vous signez lors de votre validation.
+L'inscription comme restaurateur ou livreur partenaire est soumise à validation manuelle de notre équipe (24-48h après dépôt du dossier). Les restaurants fournissent leurs repas à ComoDelivery selon un contrat de fourniture, et les livreurs interviennent selon un contrat de prestation, signés lors de la validation. Aucun abonnement ni frais n'est demandé aux partenaires.
 
 ## 7. Propriété intellectuelle
 
@@ -69,12 +68,9 @@ Tout le contenu de l'application (design, logo, code, textes, photos) est la pro
 
 ## 8. Limitation de responsabilité
 
-ComoDelivery met tout en œuvre pour assurer la qualité du Service mais ne peut être tenu responsable :
-- des défaillances techniques externes (panne réseau, interruption Stripe, etc.),
-- des erreurs ou retards des restaurants partenaires,
-- des comportements des livreurs partenaires (qui agissent comme indépendants).
+ComoDelivery met tout en œuvre pour assurer la disponibilité et la qualité du Service. Sa responsabilité en tant que vendeur des repas est décrite dans les [CGV](/cgv/).
 
-Notre responsabilité est strictement limitée au remboursement de la commande litigieuse.
+ComoDelivery ne peut être tenu responsable des interruptions du Service dues à des défaillances techniques extérieures (réseau mobile, prestataires techniques) ou à un cas de force majeure.
 
 ## 9. Données personnelles
 
@@ -86,13 +82,13 @@ Nous pouvons modifier ces CGU à tout moment. Toute modification substantielle v
 
 ## 11. Droit applicable et juridiction
 
-Les présentes CGU sont régies par le droit comorien. Tout litige relève de la compétence des tribunaux de Moroni, sauf disposition contraire d'ordre public.
+Les présentes CGU sont soumises au droit français. Tout litige relève des tribunaux français compétents, après tentative de résolution amiable ou de médiation (voir nos [mentions légales](/mentions-legales/)).
 
 ## 12. Contact
 
 Pour toute question concernant ces CGU :
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +269 33 40 00 00
+- WhatsApp : +33 6 26 69 03 31
 
 ---
 

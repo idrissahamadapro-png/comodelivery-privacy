@@ -1,8 +1,15 @@
+---
+title: ComoDelivery — Politique de confidentialité
+layout: default
+---
+
 # Politique de confidentialité — ComoDelivery
 
-**Dernière mise à jour : 2026-05-06**
+**Dernière mise à jour : 23 septembre 2026**
 
-ComoDelivery (« nous », « notre », « nos ») exploite l'application mobile ComoDelivery (le « Service ») destinée à la livraison de cuisine comorienne aux Comores.
+ComoDelivery (« nous », « notre », « nos ») exploite l'application mobile ComoDelivery (le « Service »), qui vend des repas livrés à domicile aux Comores.
+
+**Responsable du traitement** : Idriss AHAMADA, entrepreneur individuel exerçant sous le nom commercial ComoDelivery — SIREN 908 267 826 — 14 rue de Marathon, 13013 Marseille, France — [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com).
 
 Cette page vous informe de nos politiques relatives à la collecte, l'utilisation et la divulgation des données personnelles lorsque vous utilisez notre Service, ainsi que des choix qui s'offrent à vous concernant ces données.
 
@@ -18,7 +25,7 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 ### Données collectées automatiquement
 - **Géolocalisation précise** :
   - **Client** : position au moment de la commande pour calculer les frais et délais.
-  - **Livreur** : position GPS toutes les 10 secondes pendant les courses actives uniquement, pour permettre le suivi temps réel par le client.
+  - **Livreur** : position GPS toutes les quelques secondes lorsqu'il est en ligne, pour lui proposer les courses proches et permettre le suivi en temps réel par le client.
 - **Données techniques** : modèle de téléphone, OS, version d'app, identifiant push (Expo).
 - **Données de commande** : historique des commandes, montants, méthodes de paiement, notes laissées.
 
@@ -28,19 +35,18 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 ## 2. Comment nous utilisons les données
 
 - Authentifier votre compte (OTP SMS, email/password)
-- Mettre en relation client / restaurant / livreur
+- Exécuter vos commandes : transmission au restaurant qui prépare le repas et au livreur qui l'apporte
 - Calculer les distances, temps de livraison, frais
 - Permettre le suivi temps réel des livraisons
 - Envoyer des notifications push de statut (commande acceptée, prête, livrée)
-- Traiter les paiements via Stripe (carte) ou Mobile Money (MVola)
+- Encaisser vos paiements par carte via Stripe
 - Améliorer le service et résoudre les litiges
 
 ## 3. Partage des données
 
-- **Restaurants partenaires** : reçoivent votre nom, votre adresse de livraison et le détail de votre commande.
+- **Restaurants partenaires** (fournisseurs de ComoDelivery) : reçoivent votre prénom et le détail de votre commande, uniquement pour la préparer.
 - **Livreurs** : reçoivent votre nom, numéro de téléphone et adresse pour vous livrer.
 - **Stripe** : reçoit les données de paiement carte (jamais stockées chez nous).
-- **Telma / Comores Telecom** (paiement MVola) : reçoit le numéro de mobile pour la transaction.
 - **Supabase** : hébergement de la base de données et de l'authentification (eu-west-1).
 - **Expo / Apple / Google** : pour la livraison des notifications push.
 
@@ -49,7 +55,8 @@ Nous ne vendons jamais vos données personnelles à des tiers.
 ## 4. Conservation des données
 
 - Données de compte : conservées tant que votre compte est actif. Suppression sur demande.
-- Commandes et preuves de livraison : 3 ans pour conformité fiscale.
+- Commandes : 10 ans, durée légale de conservation des pièces comptables.
+- Preuves de livraison (photo, code de remise) : 3 ans, pour le traitement des litiges.
 - Logs techniques : 30 jours.
 
 ## 5. Sécurité
@@ -61,11 +68,11 @@ Nous ne vendons jamais vos données personnelles à des tiers.
 
 ## 6. Vos droits
 
-Conformément aux meilleures pratiques RGPD :
+Conformément au Règlement général sur la protection des données (RGPD) :
 
 - **Accès** : voir toutes vos données depuis l'écran Profil.
 - **Rectification** : modifier nom, photo, adresse depuis l'app.
-- **Suppression** : envoyer un email à `support@comodelivery.km` pour supprimer votre compte et toutes les données associées sous 30 jours.
+- **Suppression** : depuis l'application (Profil → Supprimer mon compte), ou par email à [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com). Les commandes sont conservées de façon anonymisée pour les obligations comptables.
 - **Portabilité** : recevoir un export JSON de vos commandes sur demande.
 - **Opposition** : vous pouvez désactiver les notifications push depuis les réglages du téléphone.
 
@@ -86,6 +93,8 @@ Nous pouvons mettre à jour cette politique. La date en haut indique la dernièr
 
 ## 10. Contact
 
-Pour toute question : **support@comodelivery.km**
+Pour toute question ou pour exercer vos droits : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
 
-ComoDelivery — Moroni, Grande Comore, Union des Comores
+En cas de désaccord, vous pouvez saisir la **CNIL** ([cnil.fr](https://www.cnil.fr)).
+
+ComoDelivery — Idriss AHAMADA, entrepreneur individuel — 14 rue de Marathon, 13013 Marseille, France

@@ -5,143 +5,142 @@ layout: default
 
 # Conditions Générales de Vente (CGV) — ComoDelivery
 
-**Dernière mise à jour : 2026-05-10**
+**Dernière mise à jour : 23 septembre 2026**
 
 Les présentes Conditions Générales de Vente régissent les commandes passées sur l'application ComoDelivery. Elles complètent les [CGU](/cgu/) et la [Politique de confidentialité](/privacy/).
 
-## 1. Identification du vendeur
+## 1. Le vendeur
 
-L'application ComoDelivery est éditée et exploitée par :
-- **ComoDelivery** (en cours d'enregistrement RCCM aux Comores)
+Les repas proposés dans l'application sont **vendus par ComoDelivery**, nom commercial de :
+
+- **Idriss AHAMADA**, entrepreneur individuel
+- SIREN : 908 267 826
+- 14 rue de Marathon, 13013 Marseille, France
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +269 33 40 00 00
+- WhatsApp : +33 6 26 69 03 31
 
-Les **plats** sont vendus par les **restaurants partenaires** affichés dans l'application (chacun étant indépendamment immatriculé). ComoDelivery agit comme intermédiaire technique de paiement.
+Les repas sont préparés par des **restaurants partenaires** établis aux Comores, qui les fournissent à ComoDelivery. Vous achetez donc vos repas à ComoDelivery, votre unique interlocuteur pour la commande, le paiement, la livraison et les éventuelles réclamations.
 
-## 2. Produits et services
+## 2. Produits et livraison
 
-### Plats préparés
-Les plats commandés sont préparés par les restaurants partenaires, conformément à la fiche produit affichée (description, options, prix). Les photos sont indicatives.
+### Repas
+Chaque repas est préparé à la commande par le restaurant partenaire indiqué sur sa fiche, conformément à la description et aux options affichées. Les photos sont indicatives. Pour toute question sur la composition d'un plat ou les allergènes, contactez-nous avant de commander.
 
-### Service de livraison
-La livraison est assurée par des **livreurs partenaires** indépendants, présents dans la zone de chalandise du restaurant (rayon de 15 km).
+### Livraison
+La livraison est assurée par des **livreurs partenaires** indépendants, dans la zone de livraison propre à chaque restaurant. Votre adresse est vérifiée au moment de la commande : si elle se trouve hors zone, la commande n'est pas possible.
 
 ### Disponibilité
-Les restaurants peuvent fermer ou s'absenter ponctuellement. L'application n'affiche que les restaurants ouverts ET disposant d'au moins un livreur en ligne dans la zone.
+Un restaurant peut fermer ou suspendre ponctuellement certains plats. Seuls les plats disponibles peuvent être commandés.
 
 ## 3. Prix et paiement
 
 ### Prix
-Les prix sont affichés en **francs comoriens (KMF)** TTC. Les frais de livraison sont indiqués séparément avant validation de la commande.
+Les prix sont affichés en **francs comoriens (KMF)**. TVA non applicable, article 293 B du Code général des impôts. Les frais de livraison et de service sont indiqués séparément avant la validation de la commande.
 
-### Modes de paiement acceptés
-- Carte bancaire (Visa, Mastercard, Apple Pay, Google Pay) via **Stripe** — 100 % sécurisé (norme PCI-DSS).
-- **Comores Mobile Money** (MVola Telma).
+### Moyens de paiement
+- Carte bancaire (Visa, Mastercard), Apple Pay et Google Pay, via **Stripe**.
 
-ComoDelivery ne stocke jamais votre numéro de carte. Stripe et MVola sont les seuls détenteurs des données de paiement.
+Le paiement est débité **en euros**, sur la base de 1 € = 492 KMF (parité fixe du franc comorien, arrondie). ComoDelivery ne voit ni ne stocke jamais votre numéro de carte.
 
-### Mécanisme de paiement
-- Lors de la validation de votre commande, votre carte est **autorisée** (montant pré-bloqué) mais **non débitée**.
-- Le débit effectif intervient **uniquement à la livraison réussie**.
-- En cas d'annulation à n'importe quel stade, l'autorisation est libérée automatiquement : **aucun montant n'est prélevé**.
+### Débit à la livraison
+- À la validation de votre commande, votre carte est **autorisée** (montant réservé) mais **pas débitée**.
+- Le débit intervient **uniquement une fois la commande livrée**.
+- Si la commande est annulée avant livraison, l'autorisation est libérée : **aucun montant n'est prélevé**.
 
 ### Codes promo
-Les codes promo sont valables sous conditions :
-- Date d'expiration affichée
-- Montant minimum de commande
-- Nombre maximum d'utilisations
-- Cumulables ou non selon les règles affichées
+Les codes promo sont valables selon les conditions affichées : date d'expiration, montant minimum de commande, nombre d'utilisations, cumul éventuel.
 
 ## 4. Commande et livraison
 
-### Passage de commande
-- Choisissez votre restaurant et vos plats dans l'application.
-- Renseignez ou sélectionnez votre adresse de livraison.
-- Validez et payez via le mode choisi.
-- Vous recevez un récapitulatif et pouvez suivre la commande en temps réel.
+### Passer commande
+1. Choisissez un restaurant et vos plats.
+2. Renseignez ou sélectionnez votre adresse de livraison.
+3. Validez et payez.
+4. Suivez votre commande en temps réel dans l'application.
 
 ### Étapes d'une commande
-1. **Acceptation par le restaurant** (≤ 5 min)
-2. **Préparation** (10 à 25 min)
-3. **Récupération par le livreur**
-4. **Livraison à votre adresse** (5 à 20 min selon distance)
+1. **Acceptation** par le restaurant
+2. **Préparation**
+3. **Récupération** par le livreur
+4. **Livraison** à votre adresse
 
-### Auto-annulations
-Si **aucun livreur** ne prend la course dans les 10 minutes suivant la commande, ou si le livreur ne récupère pas la commande dans les 20 minutes après son acceptation, ComoDelivery **annule automatiquement** la commande et libère votre paiement (zéro prélèvement).
+Les délais affichés sont indicatifs et dépendent du trafic, de la météo et de l'activité du restaurant.
+
+### Annulations automatiques
+ComoDelivery annule automatiquement la commande, et libère votre paiement sans aucun prélèvement, dans les cas suivants :
+- le paiement n'a pas été confirmé dans les **30 minutes** ;
+- **aucun livreur** n'a pris en charge la course dans les **10 minutes** suivant la commande.
+
+Si un livreur n'a pas récupéré la commande 20 minutes après qu'elle est prête, la course est proposée à un autre livreur.
 
 ### Réception
-À la livraison, le livreur peut vous demander une confirmation (signature, photo). Une fois la commande remise, le paiement est capturé.
+À la livraison, le livreur vous demande le **code de remise** affiché dans l'application. Vous devez être joignable au numéro indiqué pendant la livraison.
 
 ## 5. Droit de rétractation
 
-Conformément à l'article L.121-21-8 du Code de la consommation (équivalent local), les biens **périssables** (cuisinés à la commande) ne sont pas soumis au droit de rétractation classique.
+Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux biens confectionnés selon vos spécifications ni aux biens susceptibles de se détériorer rapidement, ce qui est le cas des repas préparés à la commande.
 
-Cependant, vous disposez d'un **droit au litige** dans les conditions suivantes :
-- 30 minutes après livraison pour signaler un problème (plat froid, mauvais plat, plat manquant, etc.).
-- 24 heures pour signaler une non-réception (« commande pas reçue »).
+Vous bénéficiez en revanche de la procédure de réclamation ci-dessous.
 
-## 6. Litiges et remboursements
+## 6. Réclamations et remboursements
+
+### Délais
+- **30 minutes** après la livraison pour signaler un problème : plat froid, erroné, manquant ou abîmé.
+- **24 heures** pour signaler une commande non reçue.
 
 ### Procédure
-1. Ouvrez le litige depuis le reçu de la commande dans l'application.
-2. Sélectionnez le motif (Pas reçu / Mauvais plat / Plat manquant / Plat froid / Plat abîmé / Retard / Autre).
-3. Décrivez le problème (10 caractères minimum) et joignez une photo si disponible.
-4. Notre équipe examine sous 24h ouvrées.
+1. Ouvrez une réclamation depuis le reçu de la commande dans l'application.
+2. Choisissez le motif et décrivez le problème, avec une photo si possible.
+3. Nous examinons la réclamation sous 24 heures ouvrées.
 
 ### Décision
-- **Remboursement total** : si la commande est jugée totalement défectueuse ou non livrée.
-- **Remboursement partiel** : si une partie de la commande est en cause.
-- **Refus** : si l'enquête conclut à l'absence de motif valable.
+- **Remboursement total** si la commande est défectueuse ou n'a pas été livrée.
+- **Remboursement partiel** si une partie seulement de la commande est en cause.
+- **Refus motivé** si la réclamation n'est pas fondée.
 
-### Modalités de remboursement
-Pour les paiements **Stripe**, le remboursement est **automatique** dès la validation du litige : crédit sur votre carte sous 5-10 jours ouvrés.
+Le remboursement est versé automatiquement sur la carte utilisée, sous 5 à 10 jours ouvrés selon votre banque.
 
-Pour les paiements **MVola**, le remboursement est traité manuellement sous 5 jours ouvrés.
+## 7. Responsabilité et garanties
 
-## 7. Restaurants et livreurs partenaires
+En tant que vendeur, ComoDelivery est responsable de plein droit envers vous de la bonne exécution de votre commande, y compris lorsque la préparation ou la livraison est assurée par ses partenaires (article L.221-15 du Code de la consommation). Vous bénéficiez de la garantie légale de conformité des articles L.217-3 et suivants du même code.
 
-### Restaurateurs
-Les restaurants partenaires s'engagent à :
-- Respecter les normes d'hygiène locales,
-- Préparer chaque commande dans les délais annoncés,
-- Maintenir leur menu à jour (disponibilité, prix).
+ComoDelivery n'est pas responsable d'une mauvaise exécution imputable à votre fait (adresse erronée, absence ou numéro injoignable lors de la livraison) ou à un cas de force majeure.
 
-### Livreurs
-Les livreurs partenaires sont **indépendants**. Ils s'engagent à :
-- Respecter les délais de livraison,
-- Maintenir le repas à température (sac isotherme),
-- Vérifier la commande avant remise au client.
+## 8. Restaurants et livreurs partenaires
 
-ComoDelivery vérifie l'identité et les documents de chaque partenaire avant validation.
+Les restaurants partenaires sont sélectionnés par ComoDelivery et s'engagent contractuellement sur l'hygiène, la conformité des repas et les délais de préparation.
 
-## 8. Responsabilité
-
-ComoDelivery n'est pas responsable :
-- de la qualité gustative des plats (responsabilité du restaurant),
-- du comportement des livreurs (acteurs indépendants),
-- des retards causés par des circonstances exceptionnelles (météo, manifestations, panne réseau),
-- des erreurs d'adresse fournies par le client.
-
-Notre responsabilité est strictement limitée au montant de la commande contestée.
+Les livreurs partenaires sont des travailleurs indépendants dont ComoDelivery vérifie l'identité et les documents avant validation.
 
 ## 9. Force majeure
 
-Aucune partie ne peut être tenue responsable d'un manquement résultant d'un cas de force majeure : catastrophe naturelle, grève, panne d'infrastructure majeure, etc.
+Aucune partie ne peut être tenue responsable d'un manquement résultant d'un cas de force majeure : catastrophe naturelle, grève, panne majeure d'infrastructure.
 
-## 10. Modifications des CGV
+## 10. Données personnelles
 
-ComoDelivery se réserve le droit de modifier ces CGV à tout moment. Les CGV applicables à votre commande sont celles en vigueur au moment de sa validation. Toute modification substantielle vous sera notifiée.
+Le traitement de vos données est décrit dans notre [Politique de confidentialité](/privacy/).
 
-## 11. Droit applicable et juridiction
+## 11. Médiation
 
-Les présentes CGV sont régies par le droit comorien. Tout litige non résolu à l'amiable relève de la compétence exclusive des tribunaux de Moroni.
+En cas de litige non résolu avec nous, vous pouvez recourir gratuitement au médiateur de la consommation, après une réclamation écrite restée sans réponse satisfaisante sous 30 jours :
 
-## 12. Contact
+**CM2C — Centre de la Médiation de la Consommation de Conciliateurs de Justice**
+14 rue Saint-Jean, 75017 Paris — [cm2c.net](https://cm2c.net)
+
+## 12. Droit applicable
+
+Les présentes CGV sont soumises au droit français. À défaut de résolution amiable ou par médiation, le litige est porté devant les tribunaux français compétents selon les règles de droit commun.
+
+## 13. Modification des CGV
+
+ComoDelivery peut modifier ces CGV. Les CGV applicables à votre commande sont celles en vigueur au moment de sa validation.
+
+## 14. Contact
 
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +269 33 40 00 00
+- WhatsApp : +33 6 26 69 03 31
 - Site : [comodelivery.app](https://comodelivery.app)
 
 ---
 
-[← Retour à l'accueil](/) · [CGU](/cgu/) · [Politique de confidentialité](/privacy/)
+[← Retour à l'accueil](/) · [CGU](/cgu/) · [Politique de confidentialité](/privacy/) · [Mentions légales](/mentions-legales/)

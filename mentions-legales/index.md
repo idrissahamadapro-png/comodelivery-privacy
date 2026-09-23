@@ -5,7 +5,7 @@ layout: default
 
 # Mentions légales — ComoDelivery
 
-**Dernière mise à jour : 26 mai 2026**
+**Dernière mise à jour : 23 septembre 2026**
 
 Conformément aux dispositions de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), il est précisé aux utilisateurs du site `comodelivery.app` et des applications mobiles ComoDelivery (iOS et Android) l'identité des différents intervenants dans le cadre de leur réalisation et de leur suivi.
 
@@ -70,7 +70,6 @@ ComoDelivery s'appuie sur les services techniques suivants :
 | Service | Prestataire | Usage |
 |---|---|---|
 | Paiement par carte bancaire | **Stripe Payments Europe Ltd** (Irlande) | Encaissement CB, Apple Pay, Google Pay |
-| Paiement mobile money | **Kartalys (KartaPay)** (Comores) | Paiement MVola, Holo en KMF |
 | Notifications push | **Expo / Apple APNs / Google FCM** | Livraison des notifications mobiles |
 | SMS (OTP authentification) | **Twilio Inc.** (États-Unis) | Vérification du numéro de téléphone |
 | Email transactionnel | **Resend Inc.** (États-Unis) | Confirmations de commande, alertes |
@@ -115,8 +114,6 @@ Conformément à l'article L.612-1 du Code de la consommation, le consommateur p
 [cm2c.net](https://cm2c.net)
 
 La saisine du médiateur ne peut intervenir qu'après une réclamation écrite préalable adressée à ComoDelivery restée sans réponse satisfaisante sous **30 jours**.
-
-Pour les litiges transfrontaliers, vous pouvez également utiliser la plateforme européenne de Règlement en Ligne des Litiges (RLL) : [ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr).
 
 ## 12. Loi applicable et juridictions compétentes
 
