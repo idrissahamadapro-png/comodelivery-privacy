@@ -19,7 +19,8 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 - **Numéro de téléphone** (+269 ou +33) — pour l'authentification par OTP SMS et le contact en cas de livraison.
 - **Nom complet** — affiché au livreur pour reconnaître le client.
 - **Adresse email** (si vous vous connectez par email, Apple ou Google, et pour les restaurateurs) — pour la connexion, les mails liés à vos commandes et, sauf opposition, nos offres.
-- **Adresse de livraison** (description textuelle + GPS) — pour permettre au livreur de venir à domicile.
+- **Adresse de livraison** (position sur la carte, repère, description) — pour permettre au livreur de venir à domicile.
+- **Personne qui reçoit la commande**, si vous faites livrer quelqu'un d'autre (par exemple votre famille aux Comores) : son nom et son numéro de téléphone, que vous nous communiquez après l'en avoir informée. Ils servent uniquement au livreur pour la joindre à l'arrivée.
 - **Photo de profil** (optionnelle).
 
 ### Données collectées automatiquement
@@ -46,7 +47,7 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 ## 3. Partage des données
 
 - **Restaurants partenaires** (fournisseurs de ComoDelivery) : reçoivent votre prénom et le détail de votre commande, uniquement pour la préparer.
-- **Livreurs** : reçoivent votre nom, numéro de téléphone et adresse pour vous livrer.
+- **Livreurs** : reçoivent votre nom, numéro de téléphone et adresse — ou le nom et le numéro de la personne qui reçoit la commande — pour livrer.
 - **Stripe** : reçoit les données de paiement carte (jamais stockées chez nous).
 - **Supabase** : hébergement de la base de données et de l'authentification (eu-west-1).
 - **Expo / Apple / Google** : pour la livraison des notifications push.
