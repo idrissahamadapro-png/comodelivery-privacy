@@ -18,7 +18,7 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 ### Données fournies par l'utilisateur
 - **Numéro de téléphone** (+269 ou +33) — pour l'authentification par OTP SMS et le contact en cas de livraison.
 - **Nom complet** — affiché au livreur pour reconnaître le client.
-- **Adresse email** (restaurateurs uniquement) — pour la connexion à l'espace pro.
+- **Adresse email** (si vous vous connectez par email, Apple ou Google, et pour les restaurateurs) — pour la connexion, les mails liés à vos commandes et, sauf opposition, nos offres.
 - **Adresse de livraison** (description textuelle + GPS) — pour permettre au livreur de venir à domicile.
 - **Photo de profil** (optionnelle).
 
@@ -39,6 +39,7 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 - Calculer les distances, temps de livraison, frais
 - Permettre le suivi temps réel des livraisons
 - Envoyer des notifications push de statut (commande acceptée, prête, livrée)
+- Vous envoyer nos offres (code de bienvenue, rappels, nouveautés) par email et par notification push — voir « Communications commerciales » ci-dessous
 - Encaisser vos paiements par carte via Stripe
 - Améliorer le service et résoudre les litiges
 
@@ -49,6 +50,7 @@ Cette page vous informe de nos politiques relatives à la collecte, l'utilisatio
 - **Stripe** : reçoit les données de paiement carte (jamais stockées chez nous).
 - **Supabase** : hébergement de la base de données et de l'authentification (eu-west-1).
 - **Expo / Apple / Google** : pour la livraison des notifications push.
+- **Resend** : pour l'envoi des emails (adresse email et contenu du message uniquement).
 
 Nous ne vendons jamais vos données personnelles à des tiers.
 
@@ -74,7 +76,18 @@ Conformément au Règlement général sur la protection des données (RGPD) :
 - **Rectification** : modifier nom, photo, adresse depuis l'app.
 - **Suppression** : depuis l'application (Profil → Supprimer mon compte), ou par email à [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com). Les commandes sont conservées de façon anonymisée pour les obligations comptables.
 - **Portabilité** : recevoir un export JSON de vos commandes sur demande.
-- **Opposition** : vous pouvez désactiver les notifications push depuis les réglages du téléphone.
+- **Opposition** : vous pouvez désactiver les notifications push depuis les réglages du téléphone, et refuser nos offres à tout moment (voir ci-dessous).
+
+### Communications commerciales
+
+En tant que client, vous pouvez recevoir de notre part des offres sur nos propres services : un code de bienvenue à l'inscription, un rappel avant son expiration, un message si vous n'avez pas commandé depuis quelque temps, ou une notification si un paiement n'a pas abouti. Ces envois reposent sur notre intérêt légitime à informer nos clients de services analogues à ceux qu'ils utilisent (article L34-5 du Code des postes et des communications électroniques).
+
+Nous limitons ces envois (au plus un message promotionnel par semaine, en journée) et vous pouvez vous y opposer gratuitement et à tout moment :
+- par le lien « Ne plus recevoir les offres par mail » présent dans chaque email ;
+- dans l'application : Profil → Notifications ;
+- en nous écrivant à [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com).
+
+Les messages liés à vos commandes (confirmation, paiement, livraison, litige) ne sont pas concernés.
 
 ## 7. Cookies & traceurs
 
