@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF7F0" />
+  <title>Inscription partenaire — ComoDelivery</title>
+  <meta name="description" content="Inscris ton restaurant ou deviens livreur ComoDelivery à Moroni, directement depuis le site." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --volcan: #D84315; --volcan-dark: #B23410; --palm: #2E7D5B; --bg: #FBF7F0; --card: #fff;
+      --sand: #F3EADB; --border: #EEE6D9; --text: #1A1512; --muted: #7A6F66; --error: #B3261E;
+      --serif: 'Playfair Display', Georgia, serif; --sans: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .top { max-width: 640px; margin: 0 auto; padding: 20px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 600; font-size: 20px; text-decoration: none; }
+    .logo img { width: 34px; height: 34px; border-radius: 10px; }
+    .top .back { font-size: 14px; color: var(--muted); text-decoration: none; }
+    main { max-width: 640px; margin: 0 auto; padding: 24px 16px 96px; }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 7vw, 48px); line-height: 1.05; letter-spacing: -0.02em; }
+    h1 em { font-style: italic; font-weight: 500; color: var(--volcan); }
+    .intro { color: var(--muted); margin: 14px 0 28px; }
+
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .roles button {
+      font: inherit; cursor: pointer; text-align: left; padding: 16px; border-radius: 16px;
+      border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+    }
+    .roles button b { display: block; font-size: 16px; }
+    .roles button small { color: var(--muted); font-size: 13px; }
+    .roles button[aria-pressed="true"] { border-color: var(--volcan); box-shadow: 0 0 0 3px rgba(216,67,21,.12); }
+    .roles[hidden] { display: none; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 28px 24px; }
+    @media (max-width: 480px) { .card { padding: 22px 16px; } }
+    .card h2 { font-family: var(--serif); font-weight: 600; font-size: 24px; margin-bottom: 6px; }
+    .card .sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+    .stepper { display: flex; gap: 6px; margin-bottom: 20px; }
+    .stepper span { flex: 1; height: 4px; border-radius: 4px; background: var(--sand); }
+    .stepper span.on { background: var(--volcan); }
+
+    label { display: block; font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
+    label .opt { font-weight: 400; color: var(--muted); }
+    input[type=text], input[type=tel], input[type=email], select {
+      width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border-radius: 12px;
+      border: 1px solid var(--border); background: var(--bg); color: var(--text);
+    }
+    input:focus, select:focus { outline: none; border-color: var(--volcan); box-shadow: 0 0 0 3px rgba(216,67,21,.12); background: #fff; }
+    .row { display: flex; gap: 8px; }
+    .row select { width: 120px; flex-shrink: 0; }
+    .code { letter-spacing: .5em; text-align: center; font-size: 22px !important; }
+    .hint { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .section-title { font-family: var(--serif); font-size: 19px; font-weight: 600; margin: 30px 0 2px; padding-top: 22px; border-top: 1px solid var(--border); }
+
+    .file {
+      display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px;
+      border: 1px dashed #D9CDBB; background: var(--bg); cursor: pointer; margin-top: 10px;
+    }
+    .file:focus-within { border-color: var(--volcan); }
+    .file input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .file .ic { width: 36px; height: 36px; border-radius: 10px; background: var(--sand); display: grid; place-items: center; flex-shrink: 0; font-size: 18px; }
+    .file b { display: block; font-size: 14px; }
+    .file small { color: var(--muted); font-size: 12.5px; word-break: break-all; }
+    .file.ok { border-style: solid; border-color: var(--palm); }
+    .file.ok .ic { background: #E6F3EC; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips label { margin: 0; font-weight: 500; }
+    .chips input { position: absolute; opacity: 0; }
+    .chips span { display: inline-block; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: 14px; }
+    .chips input:checked + span { background: var(--text); color: #fff; border-color: var(--text); }
+    .chips input:focus-visible + span { outline: 2px solid var(--volcan); outline-offset: 2px; }
+
+    .btn {
+      width: 100%; margin-top: 24px; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer;
+      padding: 15px; border-radius: 999px; border: 0; background: var(--volcan); color: #fff;
+      box-shadow: 0 12px 30px rgba(216,67,21,.25);
+    }
+    .btn:hover { background: var(--volcan-dark); }
+    .btn:disabled { opacity: .6; cursor: wait; }
+    .btn.ghost { background: transparent; color: var(--text); box-shadow: none; border: 1px solid var(--border); }
+    .linkbtn { background: none; border: 0; font: inherit; font-size: 14px; color: var(--volcan); cursor: pointer; text-decoration: underline; margin-top: 14px; }
+    .error { color: var(--error); font-size: 14px; margin-top: 14px; }
+    .error:empty { display: none; }
+    .done { text-align: center; }
+    .done .big { width: 64px; height: 64px; border-radius: 50%; background: var(--palm); color: #fff; display: grid; place-items: center; margin: 0 auto 18px; }
+    .done .big svg { width: 32px; height: 32px; }
+    .done p { color: var(--muted); margin-top: 8px; }
+    .done .store { display: inline-flex; margin-top: 22px; padding: 12px 20px; border-radius: 14px; background: var(--text); color: #fff; text-decoration: none; font-weight: 600; }
+    .legal { font-size: 12.5px; color: var(--muted); margin-top: 16px; text-align: center; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a href="/" class="logo"><img src="/assets/icon.png" alt="" />ComoDelivery</a>
+    <a href="/" class="back">← Retour au site</a>
+  </header>
+
+  <main>
+    <h1 id="title">Rejoins <em>ComoDelivery.</em></h1>
+    <p class="intro" id="intro">Ton dossier est envoyé directement à notre équipe. On te répond par SMS sous 48 h.</p>
+
+    <div class="roles" id="roles" role="group" aria-label="Type d'inscription">
+      <button type="button" data-role="restaurant" aria-pressed="false"><b>Restaurant</b><small>J'inscris mon resto</small></button>
+      <button type="button" data-role="livreur" aria-pressed="false"><b>Livreur</b><small>Je livre en scooter / moto</small></button>
+    </div>
+
+    <!-- 1. Téléphone -->
+    <form class="card" id="step-phone" hidden>
+      <div class="stepper"><span class="on"></span><span></span><span></span></div>
+      <h2>Ton numéro de téléphone</h2>
+      <p class="sub">On t'envoie un code par SMS pour vérifier que c'est bien toi. Ce numéro sera aussi ton identifiant dans l'app.</p>
+      <label for="cc">Numéro</label>
+      <div class="row">
+        <select id="cc" aria-label="Indicatif">
+          <option value="+269">🇰🇲 +269</option>
+          <option value="+33">🇫🇷 +33</option>
+          <option value="+262">🇾🇹 +262</option>
+        </select>
+        <input type="tel" id="phone" inputmode="tel" autocomplete="tel-national" placeholder="3XX XX XX" required />
+      </div>
+      <button class="btn" type="submit">Recevoir le code</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <!-- 2. Code -->
+    <form class="card" id="step-code" hidden>
+      <div class="stepper"><span class="on"></span><span class="on"></span><span></span></div>
+      <h2>Entre le code reçu</h2>
+      <p class="sub" id="code-sub">Code envoyé par SMS.</p>
+      <label for="code">Code à 6 chiffres</label>
+      <input type="text" id="code" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required />
+      <button class="btn" type="submit">Vérifier</button>
+      <button class="linkbtn" type="button" id="change-phone">Changer de numéro</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <!-- 3a. Dossier restaurant -->
+    <form class="card" id="form-restaurant" hidden novalidate>
+      <div class="stepper"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+      <h2>Ton restaurant</h2>
+      <p class="sub">Les champs sans mention « facultatif » sont obligatoires.</p>
+
+      <label for="r-name">Nom du restaurant</label>
+      <input type="text" id="r-name" required />
+      <label for="r-legal">Raison sociale <span class="opt">(facultatif)</span></label>
+      <input type="text" id="r-legal" />
+      <label for="r-rccm">N° RCCM</label>
+      <input type="text" id="r-rccm" placeholder="KM-MOR-2024-A-1234" style="text-transform: uppercase" required />
+      <label for="r-phone">Téléphone du restaurant</label>
+      <input type="tel" id="r-phone" placeholder="+269 3XX XX XX" required />
+      <label for="r-email">E-mail <span class="opt">(facultatif)</span></label>
+      <input type="email" id="r-email" autocomplete="email" />
+      <label for="r-area">Quartier <span class="opt">(facultatif)</span></label>
+      <input type="text" id="r-area" placeholder="Ex. Coulée, Magoudjou…" />
+      <label for="r-city">Ville</label>
+      <input type="text" id="r-city" value="Moroni" required />
+      <button type="button" class="btn ghost" id="r-gps">📍 Utiliser ma position actuelle <span class="opt">(si tu es au resto)</span></button>
+      <p class="hint" id="r-gps-status"></p>
+
+      <p class="section-title">Le gérant</p>
+      <label for="r-manager">Nom complet du gérant</label>
+      <input type="text" id="r-manager" autocomplete="name" required />
+
+      <p class="section-title">Documents</p>
+      <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
+      <div data-files="restaurant"></div>
+
+      <button class="btn" type="submit">Envoyer mon dossier</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <!-- 3b. Dossier livreur -->
+    <form class="card" id="form-livreur" hidden novalidate>
+      <div class="stepper"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+      <h2>Ton profil livreur</h2>
+      <p class="sub">Les champs sans mention « facultatif » sont obligatoires.</p>
+
+      <label for="c-name">Nom complet</label>
+      <input type="text" id="c-name" autocomplete="name" required />
+      <label>Véhicule</label>
+      <div class="chips" role="radiogroup" aria-label="Véhicule">
+        <label><input type="radio" name="vehicle" value="scooter" checked /><span>🛵 Scooter</span></label>
+        <label><input type="radio" name="vehicle" value="moto" /><span>🏍️ Moto</span></label>
+        <label><input type="radio" name="vehicle" value="car" /><span>🚗 Voiture</span></label>
+        <label><input type="radio" name="vehicle" value="bike" /><span>🚲 Vélo</span></label>
+      </div>
+      <label for="c-plate">Plaque d'immatriculation <span class="opt">(facultatif)</span></label>
+      <input type="text" id="c-plate" style="text-transform: uppercase" />
+      <label for="c-address">Adresse <span class="opt">(facultatif)</span></label>
+      <input type="text" id="c-address" placeholder="Ex. Volo Volo, Moroni" />
+
+      <p class="section-title">Paiement de tes gains</p>
+      <p class="hint">Versements par virement bancaire, chaque semaine. MVola arrive bientôt.</p>
+      <label for="c-iban">IBAN ou numéro de compte</label>
+      <input type="text" id="c-iban" placeholder="KM..." style="text-transform: uppercase" required />
+
+      <p class="section-title">Documents</p>
+      <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
+      <div data-files="livreur"></div>
+
+      <button class="btn" type="submit">Envoyer mon dossier</button>
+      <p class="error" role="alert"></p>
+    </form>
+
+    <!-- 4. Statut / confirmation -->
+    <section class="card done" id="step-done" hidden>
+      <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+      <h2 id="done-title">Dossier envoyé !</h2>
+      <p id="done-text">Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.</p>
+      <p>En attendant, télécharge l'app : tu te connecteras avec le même numéro.</p>
+      <a class="store" href="https://apps.apple.com/fr/app/comodelivery/id6767958349" target="_blank" rel="noopener">Télécharger l'app</a>
+      <br />
+      <button class="linkbtn" type="button" id="logout">Se déconnecter</button>
+    </section>
+
+    <p class="legal">En continuant, tu acceptes nos <a href="/cgu/">CGU</a> et notre <a href="/privacy/">politique de confidentialité</a>. Tes documents sont stockés de façon privée et ne sont vus que par notre équipe.</p>
+  </main>
+
+  <script>
+    const SUPABASE_URL = 'https://ebxocnxofojeeubdwuxr.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_jEqXa2G6Om5XIYykjrNVTg_Ywyb2CkV';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const MAX_SIZE = 10 * 1024 * 1024;
+
+    // Mêmes documents et mêmes obligations que les formulaires de l'app
+    // (app/(resto)/apply.tsx et app/(courier)/apply.tsx).
+    const DOCS = {
+      restaurant: [
+        { slot: 'rccm', col: 'rccm_doc_url', label: 'Document RCCM', hint: 'Scan ou photo lisible du certificat', required: true },
+        { slot: 'manager-id', col: 'manager_id_doc_url', label: "Pièce d'identité du gérant", hint: 'CNI ou passeport', required: true },
+        { slot: 'exterior', col: 'exterior_photo_url', label: 'Photo de la façade', hint: 'Facultatif' },
+        { slot: 'interior', col: 'interior_photo_url', label: 'Photo de la salle ou cuisine', hint: 'Facultatif' },
+      ],
+      livreur: [
+        { slot: 'cni-recto', col: 'cni_recto_url', label: 'CNI recto', hint: "Carte d'identité, face avant", required: true },
+        { slot: 'cni-verso', col: 'cni_verso_url', label: 'CNI verso', hint: "Carte d'identité, face arrière", required: true },
+        { slot: 'selfie', col: 'selfie_url', label: 'Photo de toi récente', hint: 'Facultatif · bien éclairée, sans casque' },
+        { slot: 'license', col: 'license_url', label: 'Permis de conduire', hint: 'Facultatif · si scooter, moto ou voiture' },
+        { slot: 'vehicle', col: 'vehicle_photo_url', label: 'Photo du véhicule + plaque', hint: 'Facultatif · plaque visible' },
+        { slot: 'utility-bill', col: 'utility_bill_url', label: 'Justificatif de domicile', hint: 'Facultatif · facture eau ou électricité < 3 mois' },
+      ],
+    };
+    const TABLE = { restaurant: 'restaurant_applications', livreur: 'courier_applications' };
+    const KIND = { restaurant: 'restaurant', livreur: 'courier' };
+
+    const $ = (id) => document.getElementById(id);
+    const steps = ['step-phone', 'step-code', 'form-restaurant', 'form-livreur', 'step-done'];
+    let role = new URLSearchParams(location.search).get('role');
+    if (role !== 'restaurant' && role !== 'livreur') role = null;
+    let phoneE164 = null;
+    let coords = null;
+
+    function show(id) {
+      steps.forEach(s => $(s).hidden = s !== id);
+      $('roles').hidden = !(id === 'step-phone' || id === 'step-code');
+      scrollTo({ top: 0 });
+    }
+    function setError(form, msg) { form.querySelector('.error').textContent = msg || ''; }
+    function busy(form, on, label) {
+      const b = form.querySelector('button[type=submit]');
+      if (!b.dataset.label) b.dataset.label = b.textContent;
+      b.disabled = on; b.textContent = on ? (label || 'Patiente…') : b.dataset.label;
+    }
+    function frError(e) {
+      const m = (e && e.message) || String(e);
+      if (/rate limit|security purposes|over_sms_send_rate/i.test(m)) return 'Trop de tentatives. Attends une minute avant de redemander un code.';
+      if (/expired|invalid/i.test(m) && /token|otp/i.test(m)) return 'Code incorrect ou expiré.';
+      if (/phone/i.test(m) && /invalid/i.test(m)) return 'Numéro de téléphone invalide.';
+      return 'Une erreur est survenue : ' + m;
+    }
+
+    function selectRole(r) {
+      role = r;
+      document.querySelectorAll('#roles button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.role === r)));
+      $('title').innerHTML = r === 'restaurant' ? 'Inscris ton <em>restaurant.</em>' : 'Deviens <em>livreur.</em>';
+      $('intro').textContent = r === 'restaurant'
+        ? "0 KMF d'abonnement, tu gardes 88 % de chaque vente. Ton dossier est envoyé directement à notre équipe, réponse par SMS sous 48 h."
+        : 'Tu gardes 70 % des frais de livraison, plus tes pourboires. Ton dossier est envoyé directement à notre équipe, réponse par SMS sous 48 h.';
+      history.replaceState(null, '', '?role=' + r);
+    }
+    document.querySelectorAll('#roles button').forEach(b => b.addEventListener('click', async () => {
+      selectRole(b.dataset.role);
+      const { data } = await sb.auth.getSession();
+      if (data.session) route(data.session.user);
+    }));
+
+    // ---------- Champs fichiers ----------
+    const files = { restaurant: {}, livreur: {} };
+    for (const r of ['restaurant', 'livreur']) {
+      const box = document.querySelector(`[data-files="${r}"]`);
+      for (const d of DOCS[r]) {
+        const id = `f-${r}-${d.slot}`;
+        const el = document.createElement('label');
+        el.className = 'file'; el.htmlFor = id;
+        el.innerHTML = `<span class="ic" aria-hidden="true">📄</span><span><b></b><small></small></span><input type="file" id="${id}" accept="image/*,application/pdf" />`;
+        el.querySelector('b').textContent = d.label;
+        el.querySelector('small').textContent = d.hint;
+        el.querySelector('input').addEventListener('change', (ev) => {
+          const f = ev.target.files[0];
+          const form = el.closest('form');
+          if (f && f.size > MAX_SIZE) { setError(form, `« ${d.label} » dépasse 10 Mo.`); ev.target.value = ''; return; }
+          setError(form, '');
+          files[r][d.slot] = f || null;
+          el.classList.toggle('ok', !!f);
+          el.querySelector('.ic').textContent = f ? '✓' : '📄';
+          el.querySelector('small').textContent = f ? f.name : d.hint;
+        });
+        box.appendChild(el);
+      }
+    }
+
+    // ---------- 1. Téléphone ----------
+    $('step-phone').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      if (!role) return setError(form, 'Choisis d\'abord : restaurant ou livreur.');
+      const digits = $('phone').value.replace(/\D/g, '').replace(/^0+/, '');
+      if (digits.length < 6) return setError(form, 'Numéro de téléphone invalide.');
+      phoneE164 = $('cc').value + digits;
+      setError(form, ''); busy(form, true, 'Envoi du code…');
+      const { error } = await sb.auth.signInWithOtp({ phone: phoneE164, options: { channel: 'sms' } });
+      busy(form, false);
+      if (error) return setError(form, frError(error));
+      $('code-sub').textContent = `Code envoyé par SMS au ${phoneE164}.`;
+      show('step-code');
+      $('code').focus();
+    });
+    $('change-phone').addEventListener('click', () => show('step-phone'));
+
+    // ---------- 2. Code ----------
+    $('step-code').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const token = $('code').value.replace(/\D/g, '');
+      if (token.length !== 6) return setError(form, 'Le code fait 6 chiffres.');
+      setError(form, ''); busy(form, true, 'Vérification…');
+      const { data, error } = await sb.auth.verifyOtp({ phone: phoneE164, token, type: 'sms' });
+      busy(form, false);
+      if (error) return setError(form, frError(error));
+      await ensureProfile(data.user);
+      route(data.user);
+    });
+
+    // Même logique que l'app : un profil « client » est créé à la première connexion.
+    async function ensureProfile(user) {
+      const { data } = await sb.from('profiles').select('id').eq('id', user.id).maybeSingle();
+      if (!data) {
+        await sb.from('profiles').insert({ id: user.id, role: 'client', phone: user.phone ? '+' + user.phone.replace(/^\+/, '') : phoneE164, signup_platform: 'web' });
+      }
+    }
+
+    // Affiche le dossier existant s'il y en a un, sinon le formulaire.
+    async function route(user) {
+      if (!role) { show('step-phone'); return; }
+      const { data } = await sb.from(TABLE[role]).select('status, rejection_reason')
+        .eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle();
+      if (data && data.status !== 'rejected') {
+        $('done-title').textContent = data.status === 'approved' ? 'Ton dossier est validé !' : 'Dossier en cours de vérification';
+        $('done-text').textContent = data.status === 'approved'
+          ? "Bienvenue chez ComoDelivery ! Connecte-toi dans l'app avec ce numéro pour accéder à ton espace."
+          : 'Tu as déjà envoyé un dossier. Notre équipe le vérifie et te répond par SMS.';
+        show('step-done');
+        return;
+      }
+      if (data && data.status === 'rejected') {
+        const f = $('form-' + role);
+        setError(f, 'Ton précédent dossier a été refusé' + (data.rejection_reason ? ' : ' + data.rejection_reason : '') + '. Tu peux en envoyer un nouveau.');
+      }
+      const prof = await sb.from('profiles').select('full_name, phone').eq('id', user.id).maybeSingle();
+      const p = prof.data || {};
+      if (role === 'restaurant') {
+        if (!$('r-manager').value) $('r-manager').value = p.full_name || '';
+        if (!$('r-phone').value) $('r-phone').value = p.phone || '';
+      } else if (!$('c-name').value) {
+        $('c-name').value = p.full_name || '';
+      }
+      show('form-' + role);
+    }
+
+    // ---------- GPS ----------
+    $('r-gps').addEventListener('click', () => {
+      if (!navigator.geolocation) { $('r-gps-status').textContent = 'La localisation n\'est pas disponible sur ce navigateur.'; return; }
+      $('r-gps-status').textContent = 'Recherche de ta position…';
+      navigator.geolocation.getCurrentPosition(
+        (pos) => { coords = { lat: pos.coords.latitude, lng: pos.coords.longitude }; $('r-gps-status').textContent = '✓ Position enregistrée.'; },
+        () => { $('r-gps-status').textContent = 'Position refusée ou introuvable. Pas grave, on la fixera avec toi.'; },
+        { enableHighAccuracy: true, timeout: 15000 }
+      );
+    });
+
+    // ---------- 3. Envoi ----------
+    async function uploadDocs(r, userId) {
+      const out = {};
+      for (const d of DOCS[r]) {
+        const f = files[r][d.slot];
+        if (!f) continue;
+        const ext = ((f.name.split('.').pop() || 'jpg').toLowerCase()).replace(/[^a-z0-9]/g, '') || 'jpg';
+        const path = `${userId}/${KIND[r]}/${d.slot}.${ext}`;
+        const { error } = await sb.storage.from('applications').upload(path, f, { contentType: f.type || undefined, upsert: true });
+        if (error) throw new Error(`« ${d.label} » : ${error.message}`);
+        out[d.col] = path;
+      }
+      return out;
+    }
+    function missingDoc(r) {
+      const d = DOCS[r].find(d => d.required && !files[r][d.slot]);
+      return d ? `Le document « ${d.label} » est obligatoire.` : null;
+    }
+
+    $('form-restaurant').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const v = (id) => $(id).value.trim();
+      if (!v('r-name')) return setError(form, 'Nom du restaurant obligatoire.');
+      if (!v('r-rccm')) return setError(form, 'Numéro RCCM obligatoire.');
+      if (!v('r-phone')) return setError(form, 'Téléphone du restaurant obligatoire.');
+      if (!v('r-city')) return setError(form, 'Ville obligatoire.');
+      if (!v('r-manager')) return setError(form, 'Nom du gérant obligatoire.');
+      const miss = missingDoc('restaurant'); if (miss) return setError(form, miss);
+      setError(form, ''); busy(form, true, 'Envoi du dossier…');
+      try {
+        const { data: { user } } = await sb.auth.getUser();
+        if (!user) throw new Error('Session expirée, recommence la vérification du numéro.');
+        const docs = await uploadDocs('restaurant', user.id);
+        const { error } = await sb.from('restaurant_applications').insert({
+          user_id: user.id,
+          name: v('r-name'),
+          legal_name: v('r-legal') || null,
+          rccm_number: v('r-rccm').toUpperCase(),
+          phone: v('r-phone'),
+          email: v('r-email') || null,
+          area: v('r-area') || null,
+          city: v('r-city'),
+          location: coords ? `POINT(${coords.lng} ${coords.lat})` : null,
+          manager_full_name: v('r-manager'),
+          plan: 'free',
+          status: 'pending',
+          ...docs,
+        });
+        if (error) throw error;
+        await sb.from('profiles').update({ full_name: v('r-manager') }).eq('id', user.id).is('full_name', null);
+        $('done-title').textContent = 'Dossier envoyé !';
+        $('done-text').textContent = 'Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.';
+        show('step-done');
+      } catch (err) {
+        setError(form, frError(err));
+      } finally {
+        busy(form, false);
+      }
+    });
+
+    $('form-livreur').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const v = (id) => $(id).value.trim();
+      if (!v('c-name')) return setError(form, 'Nom complet obligatoire.');
+      const miss = missingDoc('livreur'); if (miss) return setError(form, miss);
+      if (!v('c-iban')) return setError(form, 'Compte de paiement obligatoire.');
+      setError(form, ''); busy(form, true, 'Envoi du dossier…');
+      try {
+        const { data: { user } } = await sb.auth.getUser();
+        if (!user) throw new Error('Session expirée, recommence la vérification du numéro.');
+        const docs = await uploadDocs('livreur', user.id);
+        const { error } = await sb.from('courier_applications').insert({
+          user_id: user.id,
+          full_name: v('c-name'),
+          vehicle_type: form.querySelector('input[name=vehicle]:checked').value,
+          license_plate: v('c-plate').toUpperCase() || null,
+          address_text: v('c-address') || null,
+          payment_method: 'bank',
+          payment_account: v('c-iban').toUpperCase(),
+          status: 'pending',
+          ...docs,
+        });
+        if (error) throw error;
+        await sb.from('profiles').update({ full_name: v('c-name') }).eq('id', user.id).is('full_name', null);
+        $('done-title').textContent = 'Dossier envoyé !';
+        $('done-text').textContent = 'Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.';
+        show('step-done');
+      } catch (err) {
+        setError(form, frError(err));
+      } finally {
+        busy(form, false);
+      }
+    });
+
+    $('logout').addEventListener('click', async () => { await sb.auth.signOut(); location.reload(); });
+
+    // ---------- Démarrage ----------
+    (async () => {
+      if (role) selectRole(role);
+      const { data } = await sb.auth.getSession();
+      if (data.session) route(data.session.user); else show('step-phone');
+    })();
+  </script>
+</body>
+</html>

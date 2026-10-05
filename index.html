@@ -3,45 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#D84315" />
-  <meta name="description" content="ComoDelivery — Première plateforme de livraison de cuisine comorienne. Mataba, langouste à la vanille, mkatra foutra livrés chez vous. Paiement par carte, Apple Pay ou Google Pay." />
-  <meta property="og:title" content="ComoDelivery — Cuisine comorienne livrée chez vous" />
-  <meta property="og:description" content="La première app de livraison aux Comores. Mataba, langouste vanille, mkatra foutra — directement chez vous." />
-  <meta property="og:image" content="https://comodelivery.app/og-image.png" />
+  <meta name="theme-color" content="#FBF7F0" />
+  <title>ComoDelivery — Les restos de Moroni, livrés chez toi</title>
+  <meta name="description" content="ComoDelivery livre les plats des restaurants de Moroni chez toi. Paiement en ligne par carte, Apple Pay ou Google Pay, suivi du livreur en direct. Et depuis la France, fais livrer ta famille aux Comores." />
+  <meta property="og:title" content="ComoDelivery — Les restos de Moroni, livrés chez toi" />
+  <meta property="og:description" content="Commande, paie en ligne, suis ton livreur en direct. Depuis Moroni ou depuis la France pour ta famille." />
+  <meta property="og:image" content="https://comodelivery.app/assets/site/og.jpg" />
   <meta property="og:url" content="https://comodelivery.app" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon multi-tailles pour compatibilité maximale (Chrome, Safari, iOS home, Android home) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon.png" />
-  <link rel="shortcut icon" href="/assets/favicon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="apple-mobile-web-app-title" content="ComoDelivery" />
-  <meta name="application-name" content="ComoDelivery" />
+  <meta name="apple-itunes-app" content="app-id=6767958349" />
 
-  <title>ComoDelivery — Cuisine comorienne livrée chez vous</title>
-
-  <!-- Vercel Web Analytics (s'active automatiquement une fois le site déployé
-       sur Vercel ; sur GitHub Pages le script 404 silencieusement, sans impact). -->
   <script defer src="/_vercel/insights/script.js"></script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============================================================
-       Design System D1 — ComoDelivery
-       ============================================================ */
     :root {
       --volcan: #D84315;
-      --volcan-dark: #A8200B;
-      --volcan-light: #FEF4EE;
+      --volcan-dark: #B23410;
       --palm: #2E7D5B;
-      --palm-dark: #1d5841;
       --gold: #F5A623;
       --bg: #FBF7F0;
       --card: #FFFFFF;
@@ -50,1293 +39,608 @@
       --border: #EEE6D9;
       --text: #1A1512;
       --muted: #7A6F66;
-      --shadow-sm: 0 2px 8px rgba(26, 21, 18, 0.04);
-      --shadow-md: 0 8px 24px rgba(26, 21, 18, 0.06);
-      --shadow-lg: 0 20px 48px rgba(26, 21, 18, 0.08);
-      --shadow-volcan: 0 16px 40px rgba(216, 67, 21, 0.25);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--sans);
       color: var(--text);
       background: var(--bg);
-      line-height: 1.55;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
-
     img { max-width: 100%; display: block; }
-    a { color: var(--volcan); text-decoration: none; transition: opacity 0.2s; }
-    a:hover { opacity: 0.75; }
-    button { font-family: inherit; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    @media (max-width: 600px) { .wrap { padding: 0 16px; } }
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    h1, h2, h3, .stat b { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; font-variant-numeric: lining-nums; }
+    h1 em, h2 em, h3 em { font-style: italic; font-weight: 500; color: var(--volcan); }
+    .kicker {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); display: inline-flex; align-items: center; gap: 10px;
+    }
+    .kicker::before { content: ''; width: 24px; height: 1px; background: currentColor; }
+    .lead { font-size: clamp(17px, 1.5vw, 19px); color: var(--muted); max-width: 520px; }
+
+    /* ---------- Boutons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px; border-radius: 999px;
+      font-size: 15px; font-weight: 600;
+      transition: transform .2s var(--ease), box-shadow .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark { background: var(--text); color: #fff; }
+    .btn-volcan { background: var(--volcan); color: #fff; box-shadow: 0 12px 30px rgba(216,67,21,.28); }
+    .btn-volcan:hover { background: var(--volcan-dark); }
+    .btn-ghost { border: 1px solid var(--border); background: var(--card); }
+    .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .store {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 11px 20px 11px 16px; border-radius: 14px;
+      background: var(--text); color: #fff; line-height: 1.15;
+      transition: transform .2s var(--ease);
+    }
+    .store:hover { transform: translateY(-2px); }
+    .store svg { width: 26px; height: 26px; }
+    .store small { display: block; font-size: 11px; opacity: .7; }
+    .store strong { font-size: 16px; font-weight: 600; }
+    .store.soon { background: transparent; color: var(--text); border: 1px solid var(--border); cursor: default; }
+    .store.soon:hover { transform: none; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251,247,240,.82);
+      backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid transparent; transition: border-color .3s;
+    }
+    .nav.scrolled { border-color: var(--border); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 21px; }
+    .logo img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav .btn { padding: 10px 18px; font-size: 14px; }
+    @media (max-width: 860px) { .nav-links { display: none; } .nav .wrap { height: 62px; } }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 72px 0 96px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(44px, 6.4vw, 88px); margin: 22px 0 24px; }
+    .hero .lead { margin-bottom: 36px; }
+    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 36px; font-size: 13px; color: var(--muted); }
+    .proof span { display: inline-flex; align-items: center; gap: 7px; }
+    .proof span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--palm); }
+
+    .hero-visual { position: relative; height: 620px; }
+    .hero-photo {
+      position: absolute; right: 0; top: 30px; width: 78%; aspect-ratio: 1;
+      border-radius: 50%; object-fit: cover;
+      box-shadow: 0 40px 80px rgba(26,21,18,.16);
+    }
+    .phone {
+      position: relative; width: 250px; aspect-ratio: 585 / 1266;
+      background: var(--text); border-radius: 40px; padding: 9px;
+      box-shadow: 0 40px 80px rgba(26,21,18,.28);
+    }
+    .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 32px; }
+    .hero-visual .phone { position: absolute; left: 4%; bottom: 0; transform: rotate(-4deg); }
+    .float-card {
+      position: absolute; right: 2%; bottom: 70px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 14px 18px; display: flex; gap: 12px; align-items: center;
+      box-shadow: 0 20px 40px rgba(26,21,18,.12); font-size: 14px;
+      animation: floaty 5s ease-in-out infinite;
+    }
+    .float-card .ic { width: 38px; height: 38px; border-radius: 50%; background: var(--palm); color: #fff; display: grid; place-items: center; }
+    .float-card .ic svg { width: 20px; height: 20px; }
+    .float-card b { display: block; font-weight: 600; }
+    .float-card small { color: var(--muted); }
+    @keyframes floaty { 50% { transform: translateY(-8px); } }
+
+    @media (max-width: 900px) {
+      .hero { padding: 40px 0 72px; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { height: 480px; max-width: 460px; width: 100%; margin: 0 auto; }
+      .hero-visual .phone { width: 200px; }
+    }
+    @media (max-width: 420px) {
+      .hero-visual { height: 420px; }
+      .hero-visual .phone { width: 172px; }
+      .float-card { bottom: 24px; padding: 10px 14px; font-size: 13px; }
     }
 
-    .serif { font-family: 'Playfair Display', Georgia, serif; }
+    /* ---------- Bandeau plats ---------- */
+    .marquee { border-block: 1px solid var(--border); overflow: hidden; padding: 22px 0; background: var(--cream); }
+    .marquee-track { display: flex; gap: 48px; width: max-content; animation: scroll 40s linear infinite; }
+    .marquee span { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--text); white-space: nowrap; display: inline-flex; align-items: center; gap: 48px; }
+    .marquee span::after { content: '✦'; font-style: normal; font-size: 14px; color: var(--volcan); }
+    @keyframes scroll { to { transform: translateX(-50%); } }
 
-    /* ============================================================
-       Navigation
-       ============================================================ */
-    nav.topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(251, 247, 240, 0.78);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    nav.topbar.scrolled {
-      border-color: var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-    nav.topbar .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--text);
-      letter-spacing: -0.5px;
-    }
-    .logo .logo-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: block;
-      object-fit: cover;
-      box-shadow: 0 6px 18px rgba(216, 67, 21, 0.2);
-    }
-    nav.topbar .links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-    nav.topbar .links a {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav.topbar .links a:hover { color: var(--text); opacity: 1; }
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--volcan);
-      color: white !important;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.1px;
-      box-shadow: var(--shadow-volcan);
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-cta:hover { transform: translateY(-1px); opacity: 1; box-shadow: 0 20px 44px rgba(216,67,21,0.35); }
-    .btn-cta:active { transform: translateY(0); }
-    @media (max-width: 720px) {
-      nav.topbar .links { display: none; }
-      nav.topbar .inner { height: 60px; }
+    /* ---------- Sections ---------- */
+    section { padding: 120px 0; }
+    @media (max-width: 700px) { section { padding: 80px 0; } }
+    .head { max-width: 680px; margin-bottom: 64px; }
+    .head h2 { font-size: clamp(36px, 4.6vw, 60px); margin: 18px 0 18px; }
+    .head.center { margin-inline: auto; text-align: center; }
+    .head.center .kicker::after { content: ''; width: 24px; height: 1px; background: currentColor; }
+    .head.center .lead { margin-inline: auto; }
+
+    /* ---------- Étapes ---------- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .step { text-align: center; }
+    .step .phone { width: 220px; margin: 0 auto 32px; transition: transform .4s var(--ease); }
+    .step:hover .phone { transform: translateY(-8px); }
+    .step .n { font-family: var(--serif); font-style: italic; color: var(--volcan); font-size: 20px; }
+    .step h3 { font-size: 28px; margin: 6px 0 10px; }
+    .step p { color: var(--muted); max-width: 300px; margin: 0 auto; font-size: 15px; }
+    @media (max-width: 860px) {
+      .steps { grid-template-columns: 1fr; gap: 64px; }
     }
 
-    /* ============================================================
-       Hero
-       ============================================================ */
-    section.hero {
-      padding-top: 140px;
-      padding-bottom: 80px;
-      position: relative;
-      overflow: hidden;
+    /* ---------- Diaspora ---------- */
+    .diaspora { background: var(--sand); }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .split h2 { font-size: clamp(36px, 4.6vw, 58px); margin: 18px 0 20px; }
+    .split .lead { margin-bottom: 28px; }
+    .ticks { list-style: none; display: grid; gap: 14px; margin-bottom: 36px; }
+    .ticks li { display: flex; gap: 12px; align-items: flex-start; }
+    .ticks li::before {
+      content: ''; flex-shrink: 0; margin-top: 4px; width: 18px; height: 18px; border-radius: 50%;
+      background: var(--palm) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
     }
-    .hero-bg {
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(245,166,35,0.18) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-bg2 {
-      position: absolute;
-      bottom: -300px;
-      left: -200px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(46,125,91,0.14) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero .inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
+    .duo { position: relative; height: 560px; }
+    .duo .photo { position: absolute; inset: 0 22% 12% 0; border-radius: 28px; object-fit: cover; width: 78%; height: 88%; }
+    .duo .phone { position: absolute; right: 0; bottom: 0; width: 220px; }
+    .duo .tag {
+      position: absolute; left: 24px; top: 24px; background: var(--card); border-radius: 999px;
+      padding: 8px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 10px 24px rgba(26,21,18,.12);
     }
     @media (max-width: 900px) {
-      .hero .inner { grid-template-columns: 1fr; gap: 50px; }
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: white;
-      border: 1.5px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      color: var(--volcan-dark);
-      box-shadow: var(--shadow-sm);
-    }
-    .badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--volcan);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.3); }
-    }
-    h1.hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 6.5vw, 76px);
-      font-weight: 800;
-      line-height: 1.02;
-      letter-spacing: -1.5px;
-      color: var(--text);
-      margin: 18px 0 22px;
-    }
-    h1.hero-title em {
-      font-style: italic;
-      font-weight: 500;
-      color: var(--volcan);
-      background: linear-gradient(135deg, var(--volcan) 0%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    p.hero-tag {
-      font-size: clamp(16px, 1.4vw, 19px);
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.55;
-      margin-bottom: 36px;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--text);
-      color: white !important;
-      padding: 14px 22px;
-      border-radius: 14px;
-      transition: transform 0.15s, box-shadow 0.2s;
-      box-shadow: var(--shadow-md);
-    }
-    .store-btn:hover { transform: translateY(-2px); opacity: 1; box-shadow: var(--shadow-lg); }
-    .store-btn svg { width: 28px; height: 28px; flex-shrink: 0; }
-    .store-btn .store-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1.1;
-    }
-    .store-btn .store-text small {
-      font-size: 11px;
-      opacity: 0.7;
-      letter-spacing: 0.3px;
-    }
-    .store-btn .store-text strong {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-    }
-    .hero-trust {
-      display: flex;
-      gap: 24px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .hero-trust > div {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .hero-trust .check {
-      color: var(--palm);
-      font-weight: 800;
+      .split { grid-template-columns: 1fr; gap: 48px; }
+      .duo { height: 460px; max-width: 480px; width: 100%; margin: 0 auto; }
+      .duo .phone { width: 180px; }
     }
 
-    /* Phone mockup */
-    .phone-mockup {
-      position: relative;
-      margin: 0 auto;
-      max-width: 320px;
-      aspect-ratio: 9 / 19;
-      background: linear-gradient(180deg, var(--volcan) 0%, var(--volcan-dark) 100%);
-      border-radius: 44px;
-      padding: 12px;
-      box-shadow: var(--shadow-lg), 0 30px 60px rgba(216,67,21,0.3);
-      transform: rotate(-3deg);
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* ---------- Plats ---------- */
+    .dishes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+    .dish { position: relative; border-radius: 24px; overflow: hidden; grid-column: span 2; aspect-ratio: 4/5; }
+    .dish:nth-child(1), .dish:nth-child(2) { grid-column: span 3; aspect-ratio: 4/3; }
+    .dish img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .dish:hover img { transform: scale(1.05); }
+    .dish figcaption {
+      position: absolute; inset: auto 0 0 0; padding: 60px 24px 22px; color: #fff;
+      background: linear-gradient(transparent, rgba(26,21,18,.72));
     }
-    .phone-mockup:hover { transform: rotate(0deg) translateY(-8px); }
-    .phone-screen {
-      width: 100%;
-      height: 100%;
-      background: var(--bg);
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .phone-screen .notch {
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 24px;
-      background: var(--text);
-      border-radius: 999px;
-      z-index: 2;
-    }
-    .phone-content {
-      padding: 50px 16px 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .phone-search {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 11px 14px;
-      border-radius: 12px;
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .phone-hero-card {
-      background: linear-gradient(135deg, var(--volcan) 0%, var(--gold) 100%);
-      border-radius: 14px;
-      padding: 14px;
-      color: white;
-    }
-    .phone-hero-card .small { font-size: 10px; opacity: 0.85; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 700; }
-    .phone-hero-card .big { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-top: 4px; line-height: 1.15; }
-    .phone-resto-card {
-      background: white;
-      border-radius: 14px;
-      padding: 0;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .phone-resto-cover {
-      height: 70px;
-      background: linear-gradient(135deg, var(--palm) 0%, var(--palm-dark) 100%);
-      position: relative;
-    }
-    .phone-resto-cover::after {
-      content: '🥥';
-      position: absolute;
-      bottom: -4px;
-      right: 12px;
-      font-size: 38px;
-    }
-    .phone-resto-body { padding: 10px 12px; }
-    .phone-resto-name { font-size: 12px; font-weight: 700; }
-    .phone-resto-meta { font-size: 9px; color: var(--muted); margin-top: 2px; }
-    .phone-resto-tags {
-      display: flex; gap: 4px; margin-top: 7px;
-    }
-    .phone-resto-tag {
-      font-size: 9px;
-      background: var(--sand);
-      padding: 3px 7px;
-      border-radius: 999px;
-      color: var(--text);
-      font-weight: 600;
+    .dish b { font-family: var(--serif); font-size: 26px; font-weight: 600; display: block; line-height: 1.1; }
+    .dish small { opacity: .85; font-size: 14px; }
+    @media (max-width: 760px) {
+      .dishes { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .dish, .dish:nth-child(1), .dish:nth-child(2) { grid-column: span 1; aspect-ratio: 4/5; }
+      .dish:nth-child(1) { grid-column: span 2; aspect-ratio: 4/3; }
+      .dish b { font-size: 20px; }
+      .dish figcaption { padding: 40px 16px 14px; }
     }
 
-    /* ============================================================
-       Section helpers
-       ============================================================ */
-    section {
-      padding: 90px 0;
-      position: relative;
-    }
-    @media (max-width: 720px) {
-      section { padding: 60px 0; }
-    }
-    .section-head {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 56px;
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--volcan);
-      background: var(--volcan-light);
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-    h2.section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4.5vw, 48px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 14px;
-    }
-    h2.section-title em {
-      font-style: italic;
-      color: var(--volcan);
-    }
-    p.section-sub {
-      font-size: 17px;
-      color: var(--muted);
-      line-height: 1.6;
+    /* ---------- Paiement ---------- */
+    .pay { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+    .pay > div { padding: 40px 32px 8px 0; }
+    .pay > div + div { padding-left: 32px; border-left: 1px solid var(--border); }
+    .pay h3 { font-size: 26px; margin-bottom: 10px; }
+    .pay p { color: var(--muted); font-size: 15px; }
+    .pill { display: inline-block; margin-bottom: 18px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--palm); background: rgba(46,125,91,.1); padding: 5px 11px; border-radius: 999px; }
+    .pill.soon { color: #9a6200; background: rgba(245,166,35,.16); }
+    @media (max-width: 860px) {
+      .pay { grid-template-columns: 1fr; }
+      .pay > div, .pay > div + div { padding: 32px 0; border-left: 0; border-bottom: 1px solid var(--border); }
     }
 
-    /* ============================================================
-       3 Personas
-       ============================================================ */
-    .personas-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    /* ---------- Partenaires (fond sombre) ---------- */
+    .partners { background: var(--text); color: #F7F1E8; }
+    .partners .kicker { color: rgba(247,241,232,.6); }
+    .partners .head h2 em { color: #FF8A5B; }
+    .partners .lead { color: rgba(247,241,232,.7); }
+    .cards2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .pcard {
+      border: 1px solid rgba(247,241,232,.14); border-radius: 28px; padding: 44px 40px;
+      display: flex; flex-direction: column; background: rgba(247,241,232,.03);
     }
-    @media (max-width: 900px) {
-      .personas-grid { grid-template-columns: 1fr; }
-    }
-    .persona-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px 28px;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .persona-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: transparent;
-    }
-    .persona-icon {
-      width: 56px; height: 56px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 22px;
-    }
-    .persona-card:nth-child(1) .persona-icon { background: linear-gradient(135deg, var(--volcan) 0%, var(--volcan-dark) 100%); box-shadow: var(--shadow-volcan); }
-    .persona-card:nth-child(2) .persona-icon { background: linear-gradient(135deg, var(--palm) 0%, var(--palm-dark) 100%); box-shadow: 0 16px 40px rgba(46,125,91,0.25); }
-    .persona-card:nth-child(3) .persona-icon { background: linear-gradient(135deg, var(--gold) 0%, #c97a00 100%); box-shadow: 0 16px 40px rgba(245,166,35,0.25); }
-    .persona-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .persona-desc {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-    .persona-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .persona-list li {
-      display: flex;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text);
-      align-items: flex-start;
-    }
-    .persona-list li::before {
-      content: '✓';
-      color: var(--palm);
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 1px;
+    .pcard .role { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(247,241,232,.6); }
+    .pcard h3 { font-size: clamp(30px, 3vw, 40px); margin: 14px 0 28px; }
+    .pcard h3 em { color: #FF8A5B; }
+    .stat { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .stat b { font-family: var(--serif); font-size: 72px; font-weight: 600; line-height: 1; color: #fff; }
+    .stat span { font-size: 15px; color: rgba(247,241,232,.7); }
+    .pcard ul { list-style: none; margin: 28px 0 36px; display: grid; gap: 12px; color: rgba(247,241,232,.85); font-size: 15px; }
+    .pcard li { padding-left: 22px; position: relative; }
+    .pcard li::before { content: '—'; position: absolute; left: 0; color: #FF8A5B; }
+    .pcard .btn { margin-top: auto; align-self: flex-start; }
+    .pcard .note { margin-top: 14px; font-size: 13px; color: rgba(247,241,232,.55); }
+    @media (max-width: 860px) {
+      .cards2 { grid-template-columns: 1fr; }
+      .pcard { padding: 32px 24px; }
+      .stat b { font-size: 60px; }
     }
 
-    /* ============================================================
-       How it works
-       ============================================================ */
-    section.how {
-      background: linear-gradient(180deg, var(--cream) 0%, var(--bg) 100%);
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 820px; margin: 0 auto; border-top: 1px solid var(--border); }
+    .faq details { border-bottom: 1px solid var(--border); }
+    .faq summary {
+      list-style: none; cursor: pointer; padding: 26px 40px 26px 0; position: relative;
+      font-family: var(--serif); font-size: clamp(19px, 2vw, 23px); font-weight: 600;
     }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      position: relative;
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+      font-family: var(--sans); font-weight: 400; font-size: 28px; color: var(--volcan); transition: transform .3s var(--ease);
     }
-    @media (max-width: 900px) {
-      .steps { grid-template-columns: 1fr 1fr; gap: 20px; }
-    }
-    @media (max-width: 540px) {
-      .steps { grid-template-columns: 1fr; }
-    }
-    .step-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px 24px;
-      position: relative;
-      transition: transform 0.25s;
-    }
-    .step-card:hover { transform: translateY(-4px); }
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(135deg, var(--volcan) 0%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-      letter-spacing: -2px;
-    }
-    .step-title {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    .step-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq details p { color: var(--muted); padding: 0 40px 26px 0; max-width: 680px; }
+    .faq summary:focus-visible { outline: 2px solid var(--volcan); outline-offset: 4px; border-radius: 4px; }
 
-    /* ============================================================
-       Cuisine showcase
-       ============================================================ */
-    .dishes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 900px) {
-      .dishes-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .dishes-grid { grid-template-columns: 1fr; }
-    }
-    .dish-card {
-      border-radius: 22px;
-      aspect-ratio: 4 / 3;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.35s, box-shadow 0.35s;
-      cursor: default;
-    }
-    .dish-card:hover {
-      transform: scale(1.03);
-      box-shadow: var(--shadow-lg);
-    }
-    .dish-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.5) 100%);
-      z-index: 1;
-    }
-    .dish-card .stripes {
-      position: absolute;
-      inset: 0;
-      opacity: 0.08;
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.6),
-        rgba(255,255,255,0.6) 2px,
-        transparent 2px,
-        transparent 18px
-      );
-    }
-    .dish-emoji {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      font-size: 80px;
-      z-index: 1;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
-    }
-    .dish-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 24px 22px;
-      color: white;
-      z-index: 2;
-    }
-    .dish-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .dish-origin {
-      font-size: 13px;
-      opacity: 0.92;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-    }
-    /* Dish color variations */
-    .d-volcan { background: linear-gradient(135deg, #D84315 0%, #A8200B 100%); }
-    .d-palm   { background: linear-gradient(135deg, #2E7D5B 0%, #1d5841 100%); }
-    .d-ocean  { background: linear-gradient(135deg, #2980b9 0%, #1c5d87 100%); }
-    .d-gold   { background: linear-gradient(135deg, #F5A623 0%, #c97a00 100%); }
-    .d-earth  { background: linear-gradient(135deg, #8B4513 0%, #5d2f0d 100%); }
-    .d-coral  { background: linear-gradient(135deg, #FF6B5C 0%, #c64b3d 100%); }
+    /* ---------- CTA final ---------- */
+    .final { text-align: center; padding-bottom: 140px; }
+    .final h2 { font-size: clamp(44px, 7vw, 96px); margin: 20px auto 24px; max-width: 900px; }
+    .final .lead { margin: 0 auto 40px; }
+    .final .ctas { justify-content: center; }
 
-    /* ============================================================
-       Payment & security
-       ============================================================ */
-    .payment-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 900px) {
-      .payment-grid { grid-template-columns: 1fr; }
-    }
-    .payment-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    }
-    .payment-card:hover {
-      border-color: var(--volcan);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    .payment-card .pay-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 18px;
-    }
-    .payment-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .payment-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-    .payment-card .pay-tag {
-      display: inline-block;
-      margin-top: 14px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--palm);
-      background: rgba(46,125,91,0.1);
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--border); padding: 56px 0 40px; font-size: 14px; }
+    .foot { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .foot p { color: var(--muted); margin-top: 14px; max-width: 300px; }
+    .foot h4 { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
+    .foot ul { list-style: none; display: grid; gap: 9px; }
+    .foot a { color: var(--muted); }
+    .foot a:hover { color: var(--volcan); }
+    .legal { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+    @media (max-width: 720px) { .foot { grid-template-columns: 1fr 1fr; gap: 32px; } .foot > div:first-child { grid-column: span 2; } }
 
-    /* ============================================================
-       Coverage — 3 îles
-       ============================================================ */
-    section.coverage {
-      background: linear-gradient(180deg, var(--bg) 0%, var(--cream) 100%);
-    }
-    .islands-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 900px) {
-      .islands-grid { grid-template-columns: 1fr; }
-    }
-    .island-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 32px 28px;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
-    }
-    .island-card .blob {
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      opacity: 0.12;
-    }
-    .island-card:nth-child(1) .blob { background: var(--volcan); }
-    .island-card:nth-child(2) .blob { background: var(--palm); }
-    .island-card:nth-child(3) .blob { background: var(--gold); }
-    .island-card .island-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      position: relative;
-    }
-    .island-card .island-city {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      position: relative;
-    }
-    .island-card .island-desc {
-      font-size: 14px;
-      color: var(--text);
-      opacity: 0.78;
-      line-height: 1.6;
-      position: relative;
-    }
-    .island-card .island-status {
-      margin-top: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--palm);
-      position: relative;
-    }
-    .island-card .island-status.soon {
-      color: var(--gold);
-    }
 
-    /* ============================================================
-       CTA final
-       ============================================================ */
-    .cta-block {
-      background: linear-gradient(135deg, var(--volcan) 0%, var(--volcan-dark) 100%);
-      border-radius: 32px;
-      padding: 64px 48px;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-volcan);
+    /* ---------- Splash ---------- */
+    #splash {
+      position: fixed; inset: 0; z-index: 1000; background: var(--bg);
+      display: grid; place-items: center; transition: opacity .5s var(--ease), visibility .5s;
     }
-    .cta-block::before {
-      content: '';
-      position: absolute;
-      top: -60%;
-      right: -10%;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cta-block::after {
-      content: '';
-      position: absolute;
-      bottom: -50%;
-      left: -10%;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cta-block > * { position: relative; z-index: 1; }
-    .cta-block .eyebrow {
-      background: rgba(255,255,255,0.15);
-      color: white;
-    }
-    .cta-block h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
-      line-height: 1.05;
-      margin-bottom: 16px;
-      letter-spacing: -1px;
-    }
-    .cta-block p {
-      font-size: 18px;
-      max-width: 580px;
-      margin: 0 auto 36px;
-      opacity: 0.92;
-      line-height: 1.55;
-    }
-    .cta-contacts {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .cta-btn-light {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: white;
-      color: var(--volcan-dark) !important;
-      padding: 14px 24px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: transform 0.15s;
-    }
-    .cta-btn-light:hover { transform: translateY(-2px); opacity: 1; }
-    .cta-btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.1);
-      color: white !important;
-      padding: 14px 24px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      border: 1.5px solid rgba(255,255,255,0.3);
-      transition: background 0.2s;
-    }
-    .cta-btn-outline:hover { background: rgba(255,255,255,0.18); opacity: 1; }
+    #splash.out { opacity: 0; visibility: hidden; }
+    #splash .mark { display: grid; justify-items: center; gap: 18px; animation: splashIn .7s var(--ease) both; }
+    #splash img { width: 96px; height: 96px; border-radius: 26px; box-shadow: 0 24px 50px rgba(216,67,21,.22); }
+    #splash span { font-family: var(--serif); font-size: 24px; font-weight: 600; }
+    #splash i { display: block; width: 120px; height: 2px; background: var(--sand); border-radius: 2px; overflow: hidden; position: relative; }
+    #splash i::after { content: ''; position: absolute; inset: 0; width: 40%; background: var(--volcan); border-radius: 2px; animation: splashBar 1s ease-in-out infinite; }
+    @keyframes splashIn { from { opacity: 0; transform: scale(.92); } }
+    @keyframes splashBar { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    .splash-seen #splash { display: none; }
 
-    /* ============================================================
-       Footer
-       ============================================================ */
-    footer {
-      padding: 60px 0 40px;
-      border-top: 1px solid var(--border);
-      background: var(--bg);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    @media (max-width: 720px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
-    .footer-brand p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 12px;
-      max-width: 320px;
-      line-height: 1.5;
-    }
-    .footer-col h4 {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col a {
-      color: var(--muted);
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--volcan); opacity: 1; }
-    .footer-bottom {
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .footer-bottom .made {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* ============================================================
-       Fade-in on scroll
-       ============================================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ---------- Apparition ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
+  <script>try { if (sessionStorage.getItem('cd-splash')) document.documentElement.classList.add('splash-seen'); } catch (e) {}</script>
 </head>
 <body>
+  <div id="splash" aria-hidden="true">
+    <div class="mark"><img src="assets/icon.png" alt="" /><span>ComoDelivery</span><i></i></div>
+  </div>
 
-  <!-- ============================================================
-       NAVIGATION
-       ============================================================ -->
-  <nav class="topbar" id="topbar">
-    <div class="container inner">
-      <a href="/" class="logo">
-        <img src="/assets/icon.png" alt="ComoDelivery" class="logo-mark" />
-        ComoDelivery
-      </a>
-      <div class="links">
-        <a href="#trois-roles">Pour qui ?</a>
-        <a href="#comment-ca-marche">Comment ça marche</a>
-        <a href="#paiement">Paiement</a>
-        <a href="#contact">Contact</a>
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="logo"><img src="assets/icon.png" alt="" />ComoDelivery</a>
+      <div class="nav-links">
+        <a href="#comment">Comment ça marche</a>
+        <a href="#diaspora">Depuis la France</a>
+        <a href="#partenaires">Restaurants &amp; livreurs</a>
+        <a href="#faq">Questions</a>
       </div>
-      <a href="#contact" class="btn-cta">Bientôt dispo</a>
+      <a href="#telecharger" class="btn btn-volcan">Télécharger</a>
     </div>
   </nav>
 
-  <!-- ============================================================
-       HERO
-       ============================================================ -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-bg2"></div>
-    <div class="container inner">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
       <div>
-        <span class="badge"><span class="dot"></span>Lancement aux Comores</span>
-        <h1 class="hero-title">
-          La cuisine&nbsp;<em>comorienne</em><br>
-          livrée chez vous.
-        </h1>
-        <p class="hero-tag">
-          Mataba, langouste à la vanille, mkatra foutra, brochettes grillées, smoothies tropicaux. Les saveurs de Moroni, Mutsamudu et Fomboni, à portée de smartphone.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contact" class="store-btn" aria-label="Télécharger sur l'App Store">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-            <div class="store-text">
-              <small>Télécharger sur</small>
-              <strong>App Store</strong>
-            </div>
+        <span class="kicker">Livraison de repas · Moroni</span>
+        <h1>Les restos de Moroni, <em>livrés chez toi.</em></h1>
+        <p class="lead">Mataba, langouste à la vanille, brochettes, pilao… Commande en quelques secondes, paie en ligne et suis ton livreur jusqu'à ta porte.</p>
+        <div class="ctas" id="telecharger">
+          <a class="store" href="https://apps.apple.com/fr/app/comodelivery/id6767958349" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
           </a>
-          <a href="#contact" class="store-btn" aria-label="Disponible sur Google Play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.207 12l2.491-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
-            <div class="store-text">
-              <small>Disponible sur</small>
-              <strong>Google Play</strong>
-            </div>
-          </a>
+          <span class="store soon" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.207 12l2.491-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
+            <span><small>Bientôt sur</small><strong>Google Play</strong></span>
+          </span>
         </div>
-        <div class="hero-trust">
-          <div><span class="check">✓</span> Paiement sécurisé Stripe</div>
-          <div><span class="check">✓</span> Apple Pay &amp; Google Pay</div>
-          <div><span class="check">✓</span> Suivi en temps réel</div>
+        <div class="proof">
+          <span>Paiement sécurisé</span>
+          <span>Suivi en direct</span>
+          <span>Code de remise</span>
         </div>
       </div>
 
-      <div>
-        <div class="phone-mockup" aria-hidden="true">
-          <div class="phone-screen">
-            <div class="notch"></div>
-            <div class="phone-content">
-              <div class="phone-search">
-                <span>🔍</span>
-                <span>Rechercher un plat, un resto…</span>
-              </div>
-              <div class="phone-hero-card">
-                <div class="small">⭐ Top de la semaine</div>
-                <div class="big">Mataba<br>au lait de coco</div>
-              </div>
-              <div class="phone-resto-card">
-                <div class="phone-resto-cover"></div>
-                <div class="phone-resto-body">
-                  <div class="phone-resto-name">Chez Mama Salima</div>
-                  <div class="phone-resto-meta">⭐ 4.8 · 25-35 min · Moroni centre</div>
-                  <div class="phone-resto-tags">
-                    <span class="phone-resto-tag">Traditionnel</span>
-                    <span class="phone-resto-tag">Halal</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img class="hero-photo" src="assets/site/langouste-vanille.jpg" alt="" />
+        <div class="phone"><img src="assets/site/scr_home.jpg" alt="" /></div>
+        <div class="float-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          <div><b>Commande livrée</b><small>Moroni centre · 24 min</small></div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ============================================================
-       3 PERSONAS
-       ============================================================ -->
-  <section id="trois-roles">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Une app, 3 rôles</span>
-        <h2 class="section-title">Connecter <em>les Comores</em>, du plat au client.</h2>
-        <p class="section-sub">ComoDelivery est une plateforme à trois côtés : clients gourmands, restaurants locaux, livreurs indépendants. Une seule app, trois expériences pensées sur mesure.</p>
-      </div>
-      <div class="personas-grid">
-        <div class="persona-card reveal">
-          <div class="persona-icon">🥥</div>
-          <h3 class="persona-title">Pour les clients</h3>
-          <p class="persona-desc">Commande tes plats préférés en quelques taps, suis ton livreur sur la carte.</p>
-          <ul class="persona-list">
-            <li>Catalogue des meilleurs restos autour de toi</li>
-            <li>Suivi GPS du livreur en temps réel</li>
-            <li>Code PIN à la remise — fini les confusions</li>
-            <li>Paiement carte, Apple Pay ou Google Pay</li>
-          </ul>
-        </div>
-        <div class="persona-card reveal">
-          <div class="persona-icon">🏪</div>
-          <h3 class="persona-title">Pour les restaurateurs</h3>
-          <p class="persona-desc">Reçois des commandes sans investir dans une équipe de livraison.</p>
-          <ul class="persona-list">
-            <li>Gestion menu + photos + options</li>
-            <li>Codes promo &amp; campagnes intégrés</li>
-            <li>Statistiques détaillées (revenus, top plats)</li>
-            <li>Versement automatique des gains</li>
-          </ul>
-        </div>
-        <div class="persona-card reveal">
-          <div class="persona-icon">🛵</div>
-          <h3 class="persona-title">Pour les livreurs</h3>
-          <p class="persona-desc">Transforme ton scooter en revenu régulier — tu choisis tes horaires.</p>
-          <ul class="persona-list">
-            <li>Reçois les courses dans ta zone</li>
-            <li>Navigation Google Maps / Waze intégrée</li>
-            <li>Suivi gains + pourboires en direct</li>
-            <li>Paiement chaque semaine par virement</li>
-          </ul>
-        </div>
-      </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Mataba</span><span>Langouste à la vanille</span><span>Mkatra foutra</span><span>Brochettes</span><span>Poisson grillé</span><span>Pilao</span><span>Thé au lait</span>
+      <span>Mataba</span><span>Langouste à la vanille</span><span>Mkatra foutra</span><span>Brochettes</span><span>Poisson grillé</span><span>Pilao</span><span>Thé au lait</span>
     </div>
-  </section>
+  </div>
 
-  <!-- ============================================================
-       HOW IT WORKS
-       ============================================================ -->
-  <section class="how" id="comment-ca-marche">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">En 4 étapes</span>
-        <h2 class="section-title">Commander n'a jamais été aussi <em>simple</em>.</h2>
-        <p class="section-sub">De la sélection du plat à la première bouchée, le parcours est pensé pour la fluidité — chaque étape transparente, chaque action en un tap.</p>
+  <!-- COMMENT ÇA MARCHE -->
+  <section id="comment">
+    <div class="wrap">
+      <div class="head center reveal">
+        <span class="kicker">Comment ça marche</span>
+        <h2>Trois gestes, <em>et c'est servi.</em></h2>
       </div>
       <div class="steps">
-        <div class="step-card reveal">
-          <div class="step-num">1</div>
-          <div class="step-title">Choisis ton resto</div>
-          <p class="step-desc">Parcours les restaurants autour de toi, regarde les photos, consulte les avis et compose ton panier.</p>
+        <div class="step reveal">
+          <div class="phone"><img src="assets/site/scr_resto.jpg" alt="Carte d'un restaurant dans l'app ComoDelivery" loading="lazy" /></div>
+          <div class="n">01</div>
+          <h3>Choisis</h3>
+          <p>Parcours les restaurants autour de toi, les photos des plats, les avis. Compose ton panier.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-num">2</div>
-          <div class="step-title">Paie en sécurité</div>
-          <p class="step-desc">Carte bancaire, Apple Pay ou Google Pay — paiement 100 % digital, autorisé à la commande, débité à la livraison.</p>
+        <div class="step reveal">
+          <div class="phone"><img src="assets/site/scr_suivi.jpg" alt="Suivi du livreur en direct sur la carte" loading="lazy" /></div>
+          <div class="n">02</div>
+          <h3>Suis</h3>
+          <p>Le resto prépare, le livreur récupère. Tu le vois arriver sur la carte, minute par minute.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-num">3</div>
-          <div class="step-title">Suis ton livreur</div>
-          <p class="step-desc">Le restaurant prépare, le livreur récupère. Tu vois sa position en direct sur la carte, son ETA mis à jour en continu.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">4</div>
-          <div class="step-title">Reçois &amp; déguste</div>
-          <p class="step-desc">Donne ton code de remise au livreur pour confirmer. Note la commande, laisse un pourboire si tu veux. Et bon appétit !</p>
+        <div class="step reveal">
+          <div class="phone"><img src="assets/site/scr_code.jpg" alt="Code de remise à donner au livreur" loading="lazy" /></div>
+          <div class="n">03</div>
+          <h3>Savoure</h3>
+          <p>Donne ton code de remise au livreur : la commande est validée, sans erreur possible.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       CUISINE SHOWCASE
-       ============================================================ -->
+  <!-- DIASPORA -->
+  <section class="diaspora" id="diaspora">
+    <div class="wrap split">
+      <div class="duo reveal" aria-hidden="true">
+        <img class="photo" src="assets/site/mataba.jpg" alt="" loading="lazy" />
+        <span class="tag">Payé en France · livré à Moroni</span>
+        <div class="phone"><img src="assets/site/scr_pay.jpg" alt="" loading="lazy" /></div>
+      </div>
+      <div class="reveal">
+        <span class="kicker">Depuis la France</span>
+        <h2>Fais plaisir à ta famille, <em>même de loin.</em></h2>
+        <p class="lead">Tu vis à Marseille, Paris ou Lyon ? Commande un repas pour tes proches aux Comores, paie avec ta carte, et ils sont livrés chez eux.</p>
+        <ul class="ticks">
+          <li>Prix affichés en euros, paiement par carte, Apple Pay ou Google Pay</li>
+          <li>Tu indiques simplement la position de ta famille sur la carte</li>
+          <li>Tu suis la livraison en direct depuis la France</li>
+        </ul>
+        <a href="https://apps.apple.com/fr/app/comodelivery/id6767958349" class="btn btn-dark" target="_blank" rel="noopener">Commander pour ma famille</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATS -->
   <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Saveurs des Comores</span>
-        <h2 class="section-title">La gastronomie de l'archipel, <em>à ta table</em>.</h2>
-        <p class="section-sub">Mélange unique de cuisine bantoue, arabe, malgache et française. Des plats préparés avec les épices et les produits frais de l'océan Indien.</p>
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="kicker">Saveurs de l'archipel</span>
+        <h2>La cuisine comorienne, <em>comme à la maison.</em></h2>
+        <p class="lead">Les plats des restaurants de Moroni, préparés à la commande avec les épices et les produits de l'océan Indien.</p>
       </div>
-      <div class="dishes-grid">
-        <div class="dish-card d-palm reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🥥</div>
-          <div class="dish-info">
-            <div class="dish-name">Mataba</div>
-            <div class="dish-origin">Feuilles de manioc, lait de coco</div>
-          </div>
-        </div>
-        <div class="dish-card d-coral reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🦐</div>
-          <div class="dish-info">
-            <div class="dish-name">Langouste vanille</div>
-            <div class="dish-origin">Grande Comore · spécialité</div>
-          </div>
-        </div>
-        <div class="dish-card d-gold reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🥖</div>
-          <div class="dish-info">
-            <div class="dish-name">Mkatra foutra</div>
-            <div class="dish-origin">Pain traditionnel à la noix de coco</div>
-          </div>
-        </div>
-        <div class="dish-card d-volcan reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🍢</div>
-          <div class="dish-info">
-            <div class="dish-name">Brochettes pilipili</div>
-            <div class="dish-origin">Bœuf mariné, piment doux</div>
-          </div>
-        </div>
-        <div class="dish-card d-ocean reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🐟</div>
-          <div class="dish-info">
-            <div class="dish-name">Thon braisé</div>
-            <div class="dish-origin">Pêche du jour, citron vert</div>
-          </div>
-        </div>
-        <div class="dish-card d-earth reveal">
-          <div class="stripes"></div>
-          <div class="dish-emoji">🍛</div>
-          <div class="dish-info">
-            <div class="dish-name">Pilao</div>
-            <div class="dish-origin">Riz parfumé aux épices</div>
-          </div>
-        </div>
+      <div class="dishes">
+        <figure class="dish reveal"><img src="assets/site/langouste-vanille.jpg" alt="Langouste à la vanille" loading="lazy" /><figcaption><b>Langouste à la vanille</b><small>La spécialité de Grande Comore</small></figcaption></figure>
+        <figure class="dish reveal"><img src="assets/site/mataba.jpg" alt="Mataba" loading="lazy" /><figcaption><b>Mataba</b><small>Feuilles de manioc, lait de coco</small></figcaption></figure>
+        <figure class="dish reveal"><img src="assets/site/brochettes.jpg" alt="Brochettes" loading="lazy" /><figcaption><b>Brochettes</b><small>Bœuf mariné, grillé au feu de bois</small></figcaption></figure>
+        <figure class="dish reveal"><img src="assets/site/poisson-grille.jpg" alt="Poisson grillé" loading="lazy" /><figcaption><b>Poisson grillé</b><small>Pêche du jour, citron vert</small></figcaption></figure>
+        <figure class="dish reveal"><img src="assets/site/mkatra-foutra.jpg" alt="Mkatra foutra" loading="lazy" /><figcaption><b>Mkatra foutra</b><small>Pain à la noix de coco</small></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       PAYMENT
-       ============================================================ -->
-  <section id="paiement" style="background: var(--cream);">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Paiement &amp; sécurité</span>
-        <h2 class="section-title">100 % digital, <em>zéro cash</em>.</h2>
-        <p class="section-sub">Plus de monnaie d'appoint à préparer, plus de billets égarés. Tous les paiements passent par des opérateurs reconnus et certifiés.</p>
+  <!-- PAIEMENT -->
+  <section style="padding-top: 40px;">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="kicker">Paiement</span>
+        <h2>100&nbsp;% en ligne, <em>zéro billet.</em></h2>
       </div>
-      <div class="payment-grid">
-        <div class="payment-card reveal">
-          <div class="pay-icon">💳</div>
-          <h3>Carte bancaire</h3>
-          <p>Visa, Mastercard, Apple Pay, Google Pay — propulsé par Stripe. Tes coordonnées ne touchent jamais nos serveurs.</p>
-          <span class="pay-tag">PCI-DSS</span>
+      <div class="pay">
+        <div class="reveal">
+          <span class="pill">Disponible</span>
+          <h3>Carte &amp; wallets</h3>
+          <p>Visa, Mastercard, Apple Pay, Google Pay. Paiement sécurisé par Stripe : tes données bancaires ne passent jamais par nos serveurs.</p>
         </div>
-        <div class="payment-card reveal">
-          <div class="pay-icon">📱</div>
+        <div class="reveal">
+          <span class="pill">Garanti</span>
+          <h3>Débité à la livraison</h3>
+          <p>Le montant est réservé quand tu commandes, et prélevé seulement une fois la commande remise. Annulée ? Tu n'es pas débité.</p>
+        </div>
+        <div class="reveal">
+          <span class="pill soon">Bientôt</span>
           <h3>Mobile Money</h3>
-          <p>MVola arrive bientôt : tu pourras payer depuis ton téléphone, sans saisir tes infos bancaires. Pas encore disponible pour l’instant.</p>
-          <span class="pay-tag">Bientôt</span>
-        </div>
-        <div class="payment-card reveal">
-          <div class="pay-icon">🛡️</div>
-          <h3>Anti-litige</h3>
-          <p>Capture manuelle Stripe : tu es débité uniquement à la livraison. Litige ? Remboursement automatique sous 24h.</p>
-          <span class="pay-tag">Garantie remise</span>
+          <p>Le paiement depuis ton téléphone arrive prochainement, sans carte bancaire.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       COVERAGE — 3 îles
-       ============================================================ -->
-  <section class="coverage">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Couverture</span>
-        <h2 class="section-title">3 îles, <em>un seul archipel</em>.</h2>
-        <p class="section-sub">Lancement à Moroni d'abord, déploiement progressif sur l'ensemble du territoire comorien.</p>
+  <!-- PARTENAIRES -->
+  <section class="partners" id="partenaires">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="kicker">Travailler avec nous</span>
+        <h2>Restaurateurs, livreurs : <em>on grandit ensemble.</em></h2>
+        <p class="lead">Inscris-toi directement ici, en quelques minutes. Réponse par SMS sous 48&nbsp;h.</p>
       </div>
-      <div class="islands-grid">
-        <div class="island-card reveal">
-          <div class="blob"></div>
-          <div class="island-name">Grande Comore</div>
-          <div class="island-city">Moroni · Itsandra · Hahaya</div>
-          <div class="island-desc">Première île de lancement. Capitale et plus grande concentration de restaurants, d'hôtels et de population urbaine connectée.</div>
-          <div class="island-status">● Lancement Q1 2026</div>
+      <div class="cards2">
+        <div class="pcard reveal" id="restaurants">
+          <span class="role">Restaurants</span>
+          <h3>Ajoute la livraison, <em>sans rien changer.</em></h3>
+          <div class="stat"><b>88&nbsp;%</b><span>de chaque vente pour toi</span></div>
+          <ul>
+            <li>0 KMF d'abonnement, 0 frais d'inscription</li>
+            <li>Commandes déjà payées : ça sonne en cuisine, tu acceptes</li>
+            <li>On gère les livreurs et les paiements</li>
+            <li>Des clients jusqu'en France grâce à la diaspora</li>
+            <li>Reversement chaque semaine</li>
+          </ul>
+          <a href="/inscription/?role=restaurant" class="btn btn-volcan">Inscrire mon restaurant</a>
+          <span class="note">Inscription en 5 minutes · ou dans l'app : Profil → Espace restaurateur</span>
         </div>
-        <div class="island-card reveal">
-          <div class="blob"></div>
-          <div class="island-name">Anjouan</div>
-          <div class="island-city">Mutsamudu · Domoni</div>
-          <div class="island-desc">Deuxième phase de déploiement. Marché urbain en croissance, fort potentiel pour la cuisine traditionnelle et les produits de la mer.</div>
-          <div class="island-status soon">◐ Q3 2026</div>
-        </div>
-        <div class="island-card reveal">
-          <div class="blob"></div>
-          <div class="island-name">Mohéli</div>
-          <div class="island-city">Fomboni</div>
-          <div class="island-desc">Troisième île, déploiement en synergie avec Anjouan. La plus petite et la plus authentique des trois grandes îles habitées.</div>
-          <div class="island-status soon">◐ Q4 2026</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CTA FINAL
-       ============================================================ -->
-  <section id="contact">
-    <div class="container">
-      <div class="cta-block reveal">
-        <span class="eyebrow">Reste informé</span>
-        <h2>L'app sort très bientôt.<br>Sois parmi les premiers.</h2>
-        <p>Contacte-nous pour être notifié du lancement, inscrire ton restaurant en avant-première, ou rejoindre la première vague de livreurs partenaires.</p>
-        <div class="cta-contacts">
-          <a href="https://wa.me/33626690331" class="cta-btn-light" target="_blank" rel="noopener">
-            💬 WhatsApp +33 6 26 69 03 31
-          </a>
-          <a href="mailto:como.delivery269@gmail.com" class="cta-btn-outline">
-            ✉️ como.delivery269@gmail.com
-          </a>
+        <div class="pcard reveal" id="livreurs">
+          <span class="role">Livreurs</span>
+          <h3>T'as un scooter ? <em>Roule avec nous.</em></h3>
+          <div class="stat"><b>70&nbsp;%</b><span>des frais de livraison</span></div>
+          <ul>
+            <li>Plus tes pourboires</li>
+            <li>Tu travailles à ton rythme, les courses arrivent près de toi</li>
+            <li>Itinéraire en direct dans l'app</li>
+            <li>Il te faut : un scooter ou une moto, ta carte d'identité</li>
+            <li>Versé chaque semaine</li>
+          </ul>
+          <a href="/inscription/?role=livreur" class="btn btn-volcan">Je deviens livreur</a>
+          <span class="note">Inscription en 5 minutes · ou dans l'app : Profil → Espace livreur</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="head center reveal">
+        <span class="kicker">Questions</span>
+        <h2>On te répond, <em>simplement.</em></h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Où livrez-vous ?</summary>
+          <p>Pour l'instant à Moroni et ses environs, en Grande Comore. Anjouan et Mohéli suivront. L'app t'indique tout de suite si ta position est desservie.</p>
+        </details>
+        <details>
+          <summary>Je n'ai pas d'adresse précise, comment ça marche ?</summary>
+          <p>Pas besoin d'adresse : tu places un repère sur la carte à l'endroit exact où tu veux être livré. Le livreur s'y rend grâce au GPS.</p>
+        </details>
+        <details>
+          <summary>Peut-on payer en espèces ?</summary>
+          <p>Non, tout se paie en ligne : carte bancaire, Apple Pay ou Google Pay. C'est plus sûr pour toi, pour le livreur et pour le restaurant. Le Mobile Money arrive bientôt.</p>
+        </details>
+        <details>
+          <summary>Je suis en France, je peux commander pour ma famille ?</summary>
+          <p>Oui. Tu paies avec ta carte, les prix sont affichés en euros, et tu places la position de ta famille sur la carte. Tu suis la livraison en direct.</p>
+        </details>
+        <details>
+          <summary>Et si ma commande est annulée ?</summary>
+          <p>Ton paiement n'est prélevé qu'à la livraison. Si la commande est annulée avant, le montant réservé est libéré et tu n'es pas débité.</p>
+        </details>
+        <details>
+          <summary>L'app est-elle disponible sur Android ?</summary>
+          <p>L'app est disponible sur iPhone. La version Android arrive très bientôt sur Google Play.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="wrap reveal">
+      <span class="kicker">ComoDelivery</span>
+      <h2>Ça sent bon, <em>non&nbsp;?</em></h2>
+      <p class="lead">Télécharge l'app et passe ta première commande dès aujourd'hui.</p>
+      <div class="ctas">
+        <a class="store" href="https://apps.apple.com/fr/app/comodelivery/id6767958349" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+        </a>
+        <a class="btn btn-ghost" href="https://wa.me/33626690331" target="_blank" rel="noopener">Nous écrire sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <img src="/assets/icon.png" alt="ComoDelivery" class="logo-mark" />
-            ComoDelivery
-          </div>
-          <p>Première plateforme de livraison de cuisine comorienne. Pour les Comores, fait par des Comoriens.</p>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a href="/" class="logo"><img src="assets/icon.png" alt="" />ComoDelivery</a>
+          <p>Les restaurants de Moroni livrés chez toi, et chez ta famille depuis la France.</p>
         </div>
-        <div class="footer-col">
+        <div>
           <h4>Découvrir</h4>
           <ul>
-            <li><a href="#trois-roles">Clients</a></li>
-            <li><a href="#trois-roles">Restaurants</a></li>
-            <li><a href="#trois-roles">Livreurs</a></li>
+            <li><a href="#comment">Comment ça marche</a></li>
+            <li><a href="#restaurants">Restaurants</a></li>
+            <li><a href="#livreurs">Livreurs</a></li>
+            <li><a href="#faq">Questions</a></li>
+            <li><a href="/inscription/">Devenir partenaire</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+        <div>
           <h4>Légal</h4>
           <ul>
             <li><a href="/mentions-legales/">Mentions légales</a></li>
             <li><a href="/privacy/">Confidentialité</a></li>
             <li><a href="/cgu/">CGU</a></li>
             <li><a href="/cgv/">CGV</a></li>
-            <li><a href="/delete-account/">Suppression compte</a></li>
+            <li><a href="/delete-account/">Suppression du compte</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+        <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="https://wa.me/33626690331">WhatsApp</a></li>
-            <li><a href="mailto:como.delivery269@gmail.com">Email</a></li>
+            <li><a href="https://wa.me/33626690331" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:como.delivery269@gmail.com">E-mail</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div>
-          © 2026 ComoDelivery — Tous droits réservés<br>
-          <span style="font-size: 12px; opacity: 0.8;">Édité par Idriss AHAMADA, Entrepreneur Individuel · SIREN&nbsp;908&nbsp;267&nbsp;826 · Marseille</span>
-        </div>
-        <div class="made">Pour les Comores, fait par des Comoriens 🇰🇲</div>
+      <div class="legal">
+        <span>© 2026 ComoDelivery · Édité par Idriss AHAMADA, EI · SIREN&nbsp;908&nbsp;267&nbsp;826 · Marseille</span>
+        <span>Pour les Comores, fait par des Comoriens</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Topbar shadow on scroll
-    const topbar = document.getElementById('topbar');
-    const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 8);
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // Splash : une fois par session, retiré au chargement (0,7 s mini, 2,5 s maxi)
+    const splash = document.getElementById('splash');
+    const t0 = Date.now();
+    const hideSplash = () => {
+      setTimeout(() => splash.classList.add('out'), Math.max(0, 700 - (Date.now() - t0)));
+      try { sessionStorage.setItem('cd-splash', '1'); } catch (e) {}
+    };
+    if (document.documentElement.classList.contains('splash-seen')) splash.remove();
+    else { addEventListener('load', hideSplash, { once: true }); setTimeout(hideSplash, 2500); }
+
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+    addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          observer.unobserve(e.target);
-        }
-      });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>
