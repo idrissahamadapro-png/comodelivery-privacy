@@ -1,7 +1,7 @@
 {
   "name": "ComoDelivery",
   "short_name": "ComoDelivery",
-  "description": "La cuisine comorienne livrée chez vous",
+  "description": "Les restos de Moroni livrés chez toi",
   "lang": "fr",
   "start_url": "/",
   "display": "standalone",
@@ -9,15 +9,14 @@
   "theme_color": "#D84315",
   "icons": [
     {
-      "src": "/assets/favicon.png",
-      "sizes": "32x32",
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
       "src": "/assets/icon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "sizes": "1024x1024",
+      "type": "image/png"
     }
   ]
 }
