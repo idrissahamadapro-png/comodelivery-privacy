@@ -44,7 +44,7 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
     body {
       font-family: var(--sans);
       color: var(--text);
@@ -343,7 +343,7 @@
         <a href="#partenaires">Restaurants &amp; livreurs</a>
         <a href="#faq">Questions</a>
       </div>
-      <a href="#telecharger" class="btn btn-volcan">Télécharger</a>
+      <a href="https://apps.apple.com/fr/app/comodelivery/id6767958349" class="btn btn-volcan" id="nav-dl" target="_blank" rel="noopener">Télécharger</a>
     </div>
   </nav>
 
@@ -631,6 +631,12 @@
     };
     if (document.documentElement.classList.contains('splash-seen')) splash.remove();
     else { addEventListener('load', hideSplash, { once: true }); setTimeout(hideSplash, 2500); }
+
+    // Android : pas encore sur Google Play → on montre les boutons des stores au lieu d'ouvrir l'App Store
+    if (/android/i.test(navigator.userAgent)) {
+      const dl = document.getElementById('nav-dl');
+      dl.href = '#telecharger'; dl.removeAttribute('target');
+    }
 
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
