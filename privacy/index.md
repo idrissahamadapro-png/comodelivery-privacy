@@ -9,7 +9,7 @@ layout: default
 
 ComoDelivery (« nous », « notre », « nos ») exploite l'application mobile ComoDelivery (le « Service »), qui vend des repas livrés à domicile aux Comores.
 
-**Responsable du traitement** : Idriss AHAMADA, entrepreneur individuel exerçant sous le nom commercial ComoDelivery — SIREN 908 267 826 — 14 rue de Marathon, 13013 Marseille, France — [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com).
+**Responsable du traitement** : l'entrepreneur individuel exerçant sous le nom commercial ComoDelivery (voir les [mentions légales](/mentions-legales/)) — SIREN 908 267 826 — 14 rue de Marathon, 13013 Marseille, France — [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com).
 
 Cette page vous informe de nos politiques relatives à la collecte, l'utilisation et la divulgation des données personnelles lorsque vous utilisez notre Service, ainsi que des choix qui s'offrent à vous concernant ces données.
 
@@ -111,4 +111,4 @@ Pour toute question ou pour exercer vos droits : [como.delivery269@gmail.com](ma
 
 En cas de désaccord, vous pouvez saisir la **CNIL** ([cnil.fr](https://www.cnil.fr)).
 
-ComoDelivery — Idriss AHAMADA, entrepreneur individuel — 14 rue de Marathon, 13013 Marseille, France
+ComoDelivery — entrepreneur individuel — 14 rue de Marathon, 13013 Marseille, France

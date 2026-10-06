@@ -30,11 +30,11 @@ France
 
 **Contact** :
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- Téléphone / WhatsApp : [+33 6 26 69 03 31](https://wa.me/33626690331)
+- Téléphone / WhatsApp : [+33 7 61 28 25 99](https://wa.me/33761282599)
 
 ## 2. Directeur de la publication
 
-Idriss AHAMADA, en sa qualité d'éditeur unique du Service.
+L'exploitant du Service mentionné ci-dessus, en sa qualité d'éditeur unique.
 
 ## 3. Hébergement du site
 
@@ -80,9 +80,9 @@ Pour plus de détails sur le traitement de vos données par ces sous-traitants, 
 
 ## 7. Propriété intellectuelle
 
-L'ensemble des éléments du site `comodelivery.app` et des applications ComoDelivery (charte graphique, textes, illustrations, logos, photographies, sons, vidéos, code source) sont la propriété exclusive de Idriss AHAMADA / ComoDelivery, ou de ses ayants droit, et sont protégés par le droit de la propriété intellectuelle.
+L'ensemble des éléments du site `comodelivery.app` et des applications ComoDelivery (charte graphique, textes, illustrations, logos, photographies, sons, vidéos, code source) sont la propriété exclusive de ComoDelivery, ou de ses ayants droit, et sont protégés par le droit de la propriété intellectuelle.
 
-Le nom « ComoDelivery » et le logo associé sont des éléments distinctifs commerciaux propres à Idriss AHAMADA. Toute reproduction, représentation, modification, publication, transmission, dénaturation, totale ou partielle, sans autorisation écrite préalable est interdite, sous peine de poursuites judiciaires conformément aux articles L.335-2 et suivants du Code de la propriété intellectuelle.
+Le nom « ComoDelivery » et le logo associé sont des éléments distinctifs commerciaux propres à ComoDelivery. Toute reproduction, représentation, modification, publication, transmission, dénaturation, totale ou partielle, sans autorisation écrite préalable est interdite, sous peine de poursuites judiciaires conformément aux articles L.335-2 et suivants du Code de la propriété intellectuelle.
 
 ## 8. Liens hypertextes
 
@@ -98,7 +98,7 @@ Les applications mobiles utilisent uniquement des identifiants techniques néces
 
 Le traitement des données personnelles est encadré par le Règlement (UE) 2016/679 (RGPD) et la loi « Informatique et Libertés » modifiée. Voir notre [politique de confidentialité](/privacy/).
 
-**Responsable de traitement** : Idriss AHAMADA
+**Responsable de traitement** : l'exploitant de ComoDelivery (voir section 1)
 **Email de contact RGPD** : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
 
 Vous disposez à tout moment d'un droit d'accès, de rectification, d'effacement, de portabilité, et d'opposition au traitement de vos données. Pour exercer ces droits, écrivez-nous à l'adresse ci-dessus. En cas de désaccord, vous pouvez introduire une réclamation auprès de la **CNIL** ([cnil.fr](https://www.cnil.fr)).
@@ -130,4 +130,4 @@ ComoDelivery se réserve le droit de modifier les présentes mentions légales �
 **Vous avez une question sur ces mentions ?**
 
 📧 [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-💬 [WhatsApp +33 6 26 69 03 31](https://wa.me/33626690331)
+💬 [WhatsApp +33 7 61 28 25 99](https://wa.me/33761282599)

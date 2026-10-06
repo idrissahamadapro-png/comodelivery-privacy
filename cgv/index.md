@@ -13,11 +13,10 @@ Les présentes Conditions Générales de Vente régissent les commandes passées
 
 Les repas proposés dans l'application sont **vendus par ComoDelivery**, nom commercial de :
 
-- **Idriss AHAMADA**, entrepreneur individuel
-- SIREN : 908 267 826
+- entrepreneur individuel, SIREN 908 267 826 (identité complète : voir les [mentions légales](/mentions-legales/))
 - 14 rue de Marathon, 13013 Marseille, France
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +33 6 26 69 03 31
+- WhatsApp : +33 7 61 28 25 99
 
 Les repas sont préparés par des **restaurants partenaires** établis aux Comores, qui les fournissent à ComoDelivery. Vous achetez donc vos repas à ComoDelivery, votre unique interlocuteur pour la commande, le paiement, la livraison et les éventuelles réclamations.
 
@@ -138,7 +137,7 @@ ComoDelivery peut modifier ces CGV. Les CGV applicables à votre commande sont c
 ## 14. Contact
 
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +33 6 26 69 03 31
+- WhatsApp : +33 7 61 28 25 99
 - Site : [comodelivery.app](https://comodelivery.app)
 
 ---

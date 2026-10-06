@@ -88,7 +88,7 @@ Les présentes CGU sont soumises au droit français. Tout litige relève des tri
 
 Pour toute question concernant ces CGU :
 - Email : [como.delivery269@gmail.com](mailto:como.delivery269@gmail.com)
-- WhatsApp : +33 6 26 69 03 31
+- WhatsApp : +33 7 61 28 25 99
 
 ---
 
