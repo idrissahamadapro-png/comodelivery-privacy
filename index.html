@@ -327,6 +327,15 @@
       html { scroll-behavior: auto; }
     }
   </style>
+  <script>
+    // Toujours ouvrir en haut de page (le navigateur restaurait l'ancienne position au rechargement),
+    // sauf si le lien vise une section (#faq, #telecharger…).
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    addEventListener('load', () => {
+      const cible = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (cible) cible.scrollIntoView({ behavior: 'instant' }); else scrollTo({ top: 0, behavior: 'instant' });
+    });
+  </script>
   <script>try { if (sessionStorage.getItem('cd-splash')) document.documentElement.classList.add('splash-seen'); } catch (e) {}</script>
 </head>
 <body>
