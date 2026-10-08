@@ -83,6 +83,13 @@
     .file.ok { border-style: solid; border-color: var(--palm); }
     .file.ok .ic { background: #E6F3EC; }
 
+    .contract { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-top: 10px; font-size: 14px; }
+    .contract ul { margin: 8px 0 12px 18px; }
+    .contract li { margin: 3px 0; }
+    .contract a { color: var(--volcan); font-weight: 600; }
+    .check { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; font-weight: 500; cursor: pointer; }
+    .check input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--volcan); flex-shrink: 0; }
+
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chips label { margin: 0; font-weight: 500; }
     .chips input { position: absolute; opacity: 0; }
@@ -187,6 +194,22 @@
       <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
       <div data-files="restaurant"></div>
 
+      <p class="section-title">Contrat</p>
+      <div class="contract">
+        <b>Contrat de fourniture de repas</b> (version du 7 octobre 2026). L'essentiel :
+        <ul>
+          <li>0 abonnement, 0 frais d'inscription ;</li>
+          <li>vous fixez vos prix, ComoDelivery vous achète vos plats à ce prix moins 12 % ;</li>
+          <li>paiement chaque semaine, par virement ou en KMF ;</li>
+          <li>résiliable à tout moment, sans frais, avec 30 jours de préavis.</li>
+        </ul>
+        <a href="/contrats/contrat-fourniture-restaurant-2026-10-07.pdf" target="_blank" rel="noopener">Lire le contrat complet (PDF)</a>
+      </div>
+      <label class="check" for="r-contract">
+        <input type="checkbox" id="r-contract" />
+        <span>J'ai lu et j'accepte le contrat de fourniture. Cette acceptation vaut signature : elle est enregistrée avec la date, l'heure et le numéro vérifié par SMS.</span>
+      </label>
+
       <button class="btn" type="submit">Envoyer mon dossier</button>
       <p class="error" role="alert"></p>
     </form>
@@ -243,6 +266,8 @@
     const SUPABASE_KEY = 'sb_publishable_jEqXa2G6Om5XIYykjrNVTg_Ywyb2CkV';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const MAX_SIZE = 10 * 1024 * 1024;
+    // Contrat publié dans /contrats/ : changer de version = nouveau fichier + nouvelle empreinte (sha256sum).
+    const CONTRAT = { version: '2026-10-07', sha256: 'c4be997d3ce0f3fadd822c9183171bb4484e6c147bb97cf43b9e81043997e100' };
 
     // Mêmes documents et mêmes obligations que les formulaires de l'app
     // (app/(resto)/apply.tsx et app/(courier)/apply.tsx).
@@ -439,6 +464,7 @@
       if (!v('r-city')) return setError(form, 'Ville obligatoire.');
       if (!v('r-manager')) return setError(form, 'Nom du gérant obligatoire.');
       const miss = missingDoc('restaurant'); if (miss) return setError(form, miss);
+      if (!$('r-contract').checked) return setError(form, "Merci de lire et d'accepter le contrat pour envoyer votre dossier.");
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
@@ -456,6 +482,8 @@
           location: coords ? `POINT(${coords.lng} ${coords.lat})` : null,
           manager_full_name: v('r-manager'),
           plan: 'free',
+          contract_version: CONTRAT.version,
+          contract_sha256: CONTRAT.sha256,
           status: 'pending',
           ...docs,
         });
