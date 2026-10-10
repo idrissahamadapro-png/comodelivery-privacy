@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /payment-success/
+Disallow: /payment-cancel/
+Disallow: /desinscription/
+
+Sitemap: https://comodelivery.app/sitemap.xml

@@ -1,7 +1,6 @@
 ---
 title: Supprimer mon compte ComoDelivery
 description: Comment supprimer définitivement votre compte ComoDelivery et vos données personnelles.
-permalink: /delete-account/
 ---
 
 # Supprimer mon compte ComoDelivery
