@@ -215,9 +215,15 @@
       <input type="text" id="c-address" placeholder="Ex. Volo Volo, Moroni" />
 
       <p class="section-title">Paiement de tes gains</p>
-      <p class="hint">Versements par virement bancaire, chaque semaine. MVola arrive bientôt.</p>
-      <label for="c-iban">IBAN ou numéro de compte</label>
-      <input type="text" id="c-iban" placeholder="KM..." style="text-transform: uppercase" required />
+      <p class="hint">Tes gains te sont versés chaque semaine.</p>
+      <label>Où veux-tu être payé ?</label>
+      <div class="chips" role="radiogroup" aria-label="Mode de paiement">
+        <label><input type="radio" name="payout" value="mvola" checked /><span>📱 Portefeuille mobile</span></label>
+        <label><input type="radio" name="payout" value="bank" /><span>🏦 Compte bancaire</span></label>
+      </div>
+      <label for="c-iban" id="c-iban-label">Opérateur et numéro du portefeuille mobile</label>
+      <input type="text" id="c-iban" placeholder="MVola +269 3XX XX XX" required />
+      <p class="hint" id="c-iban-hint">MVola, Huri Money… Tes gains y sont envoyés via Taptap Send.</p>
 
       <p class="section-title">Documents</p>
       <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
@@ -474,13 +480,23 @@
       }
     });
 
+    // Paiement des gains : portefeuille mobile (envoi Taptap Send, 'mvola' en base) ou virement bancaire.
+    const payoutMethod = () => document.querySelector('input[name=payout]:checked').value;
+    document.querySelectorAll('input[name=payout]').forEach((r) => r.addEventListener('change', () => {
+      const banque = payoutMethod() === 'bank';
+      $('c-iban-label').textContent = banque ? 'IBAN ou numéro de compte' : 'Opérateur et numéro du portefeuille mobile';
+      $('c-iban').placeholder = banque ? 'KM...' : 'MVola +269 3XX XX XX';
+      $('c-iban').style.textTransform = banque ? 'uppercase' : '';
+      $('c-iban-hint').textContent = banque ? 'Tes gains sont versés par virement.' : 'MVola, Huri Money… Tes gains y sont envoyés via Taptap Send.';
+    }));
+
     $('form-livreur').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.currentTarget;
       const v = (id) => $(id).value.trim();
       if (!v('c-name')) return setError(form, 'Nom complet obligatoire.');
       const miss = missingDoc('livreur'); if (miss) return setError(form, miss);
-      if (!v('c-iban')) return setError(form, 'Compte de paiement obligatoire.');
+      if (!v('c-iban')) return setError(form, payoutMethod() === 'bank' ? 'IBAN ou numéro de compte obligatoire.' : 'Numéro du portefeuille mobile obligatoire.');
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
@@ -492,8 +508,8 @@
           vehicle_type: form.querySelector('input[name=vehicle]:checked').value,
           license_plate: v('c-plate').toUpperCase() || null,
           address_text: v('c-address') || null,
-          payment_method: 'bank',
-          payment_account: v('c-iban').toUpperCase(),
+          payment_method: payoutMethod(),
+          payment_account: payoutMethod() === 'bank' ? v('c-iban').toUpperCase() : v('c-iban'),
           status: 'pending',
           ...docs,
         });
