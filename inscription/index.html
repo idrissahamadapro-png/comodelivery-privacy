@@ -84,6 +84,12 @@
     .file.ok { border-style: solid; border-color: var(--palm); }
     .file.ok .ic { background: #E6F3EC; }
 
+    .contract { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-top: 10px; font-size: 14px; }
+    .contract ul { margin: 8px 0 12px 18px; }
+    .contract li { margin: 3px 0; }
+    .contract a { color: var(--volcan); font-weight: 600; }
+    .check { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; font-weight: 500; cursor: pointer; }
+    .check input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--volcan); flex-shrink: 0; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chips label { margin: 0; font-weight: 500; }
@@ -229,6 +235,22 @@
       <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
       <div data-files="livreur"></div>
 
+      <p class="section-title">Contrat</p>
+      <div class="contract">
+        <b>Contrat de prestation de livraison et charte du livreur</b> (version du 29 octobre 2026). L'essentiel :
+        <ul>
+          <li>tu es indépendant et tu choisis quand tu travailles ;</li>
+          <li>tu touches 70 % des frais de livraison et tous les pourboires, versés chaque semaine ;</li>
+          <li>tu peux arrêter à tout moment, sans frais.</li>
+        </ul>
+        <a href="/contrats/contrat-livreur-2026-10-29.pdf" target="_blank" rel="noopener">Lire le contrat (PDF)</a> ·
+        <a href="/contrats/charte-livreur-2026-10-29.pdf" target="_blank" rel="noopener">Lire la charte (PDF)</a>
+      </div>
+      <label class="check" for="c-contract">
+        <input type="checkbox" id="c-contract" />
+        <span>J'ai lu et j'accepte le contrat et la charte du livreur. Cette acceptation vaut signature : elle est enregistrée avec la date, l'heure et mon numéro vérifié par SMS.</span>
+      </label>
+
       <button class="btn" type="submit">Envoyer mon dossier</button>
       <p class="error" role="alert"></p>
     </form>
@@ -252,6 +274,9 @@
     const SUPABASE_KEY = 'sb_publishable_jEqXa2G6Om5XIYykjrNVTg_Ywyb2CkV';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const MAX_SIZE = 10 * 1024 * 1024;
+    // Contrat livreur publié dans /contrats/ : nouvelle version = nouveaux fichiers + nouvelle empreinte
+    // (sha256sum du contrat), ici ET dans app/(courier)/apply.tsx.
+    const CONTRAT_LIVREUR = { version: '2026-10-29', sha256: '67c646265f50ae94936c0318a50a4180bf11fe03ada40cec0246b14241fa3c32' };
 
     // Mêmes documents et mêmes obligations que les formulaires de l'app
     // (app/(resto)/apply.tsx et app/(courier)/apply.tsx).
@@ -497,6 +522,7 @@
       if (!v('c-name')) return setError(form, 'Nom complet obligatoire.');
       const miss = missingDoc('livreur'); if (miss) return setError(form, miss);
       if (!v('c-iban')) return setError(form, payoutMethod() === 'bank' ? 'IBAN ou numéro de compte obligatoire.' : 'Numéro du portefeuille mobile obligatoire.');
+      if (!$('c-contract').checked) return setError(form, 'Lis et accepte le contrat et la charte pour envoyer ton dossier.');
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
@@ -510,6 +536,8 @@
           address_text: v('c-address') || null,
           payment_method: payoutMethod(),
           payment_account: payoutMethod() === 'bank' ? v('c-iban').toUpperCase() : v('c-iban'),
+          contract_version: CONTRAT_LIVREUR.version,
+          contract_sha256: CONTRAT_LIVREUR.sha256,
           status: 'pending',
           ...docs,
         });
