@@ -260,7 +260,7 @@
       <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
       <h2 id="done-title">Dossier envoyé !</h2>
       <p id="done-text">Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.</p>
-      <p>En attendant, télécharge l'app : tu te connecteras avec le même numéro.</p>
+      <p>En attendant, télécharge l'app : tu te connecteras avec <b>le même numéro</b>. Restaurant : touche « Espace restaurateur » puis « Continuer avec mon numéro ».</p>
       <a class="store" href="https://apps.apple.com/fr/app/comodelivery/id6767958349" target="_blank" rel="noopener">Télécharger l'app</a>
       <br />
       <button class="linkbtn" type="button" id="logout">Se déconnecter</button>
@@ -473,6 +473,11 @@
       if (!v('r-city')) return setError(form, 'Ville obligatoire.');
       if (!v('r-manager')) return setError(form, 'Nom du gérant obligatoire.');
       const miss = missingDoc('restaurant'); if (miss) return setError(form, miss);
+      if (v('r-email')) {
+        // E-mail déjà lié à un autre compte (souvent un compte client) : même contrôle que l'app.
+        const { data: otherRole } = await sb.rpc('email_account_role', { p_email: v('r-email') });
+        if (otherRole) return setError(form, `Cet e-mail est déjà utilisé par un autre compte ComoDelivery (compte ${otherRole === 'client' ? 'client' : otherRole === 'restaurant' ? 'restaurant' : 'existant'}). Indique une autre adresse, ou laisse le champ vide.`);
+      }
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
