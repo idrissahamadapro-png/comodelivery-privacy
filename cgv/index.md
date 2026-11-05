@@ -5,7 +5,7 @@ layout: default
 
 # Conditions Générales de Vente (CGV) — ComoDelivery
 
-**Dernière mise à jour : 23 septembre 2026**
+**Dernière mise à jour : 5 novembre 2026**
 
 Les présentes Conditions Générales de Vente régissent les commandes passées sur l'application ComoDelivery. Elles complètent les [CGU](/cgu/) et la [Politique de confidentialité](/privacy/).
 
@@ -74,6 +74,13 @@ Si un livreur n'a pas récupéré la commande 20 minutes après qu'elle est prê
 
 ### Réception
 À la livraison, le livreur vous demande le **code de remise** affiché dans l'application. Vous devez être joignable au numéro indiqué pendant la livraison.
+
+### Commandes à emporter
+Chez les restaurants qui le proposent, vous pouvez récupérer votre commande au comptoir au lieu de vous la faire livrer. Vous êtes prévenu dès qu'elle est prête, et vous montrez au restaurant le **code de retrait** affiché dans l'application.
+
+**Une commande prête reste due, même si vous ne venez pas la chercher.** Le repas ayant été préparé pour vous, le restaurant peut déclarer la commande non récupérée **1 heure** après l'avoir signalée comme prête. Sans retrait validé, elle est clôturée automatiquement au bout de **4 heures**. Dans les deux cas, le paiement est encaissé en totalité.
+
+Si vous êtes venu et n'avez pas été servi, ou si la clôture est une erreur, signalez-le depuis votre reçu dans les 24 heures : nous étudions votre demande et vous remboursons si elle est fondée.
 
 ## 5. Droit de rétractation
 
