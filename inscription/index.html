@@ -224,12 +224,12 @@
       <p class="hint">Tes gains te sont versés chaque semaine.</p>
       <label>Où veux-tu être payé ?</label>
       <div class="chips" role="radiogroup" aria-label="Mode de paiement">
-        <label><input type="radio" name="payout" value="mvola" checked /><span>📱 Portefeuille mobile</span></label>
+        <label><input type="radio" name="payout" value="mvola" checked /><span>📱 MVola</span></label>
         <label><input type="radio" name="payout" value="bank" /><span>🏦 Compte bancaire</span></label>
       </div>
-      <label for="c-iban" id="c-iban-label">Opérateur et numéro du portefeuille mobile</label>
-      <input type="text" id="c-iban" placeholder="MVola +269 3XX XX XX" required />
-      <p class="hint" id="c-iban-hint">MVola, Huri Money… Tes gains y sont envoyés via Taptap Send.</p>
+      <label for="c-iban" id="c-iban-label">Numéro MVola</label>
+      <input type="text" id="c-iban" placeholder="+269 3XX XX XX" required />
+      <p class="hint" id="c-iban-hint">Tes gains arrivent sur ton compte MVola, via Taptap Send.</p>
 
       <p class="section-title">Documents</p>
       <p class="hint">Photo ou PDF, lisible, 10 Mo maximum.</p>
@@ -510,14 +510,14 @@
       }
     });
 
-    // Paiement des gains : portefeuille mobile (envoi Taptap Send, 'mvola' en base) ou virement bancaire.
+    // Paiement des gains : compte MVola (envoi Taptap Send) ou virement bancaire.
     const payoutMethod = () => document.querySelector('input[name=payout]:checked').value;
     document.querySelectorAll('input[name=payout]').forEach((r) => r.addEventListener('change', () => {
       const banque = payoutMethod() === 'bank';
-      $('c-iban-label').textContent = banque ? 'IBAN ou numéro de compte' : 'Opérateur et numéro du portefeuille mobile';
-      $('c-iban').placeholder = banque ? 'KM...' : 'MVola +269 3XX XX XX';
+      $('c-iban-label').textContent = banque ? 'IBAN ou numéro de compte' : 'Numéro MVola';
+      $('c-iban').placeholder = banque ? 'KM...' : '+269 3XX XX XX';
       $('c-iban').style.textTransform = banque ? 'uppercase' : '';
-      $('c-iban-hint').textContent = banque ? 'Tes gains sont versés par virement.' : 'MVola, Huri Money… Tes gains y sont envoyés via Taptap Send.';
+      $('c-iban-hint').textContent = banque ? 'Tes gains sont versés par virement.' : 'Tes gains arrivent sur ton compte MVola, via Taptap Send.';
     }));
 
     $('form-livreur').addEventListener('submit', async (e) => {
@@ -526,7 +526,7 @@
       const v = (id) => $(id).value.trim();
       if (!v('c-name')) return setError(form, 'Nom complet obligatoire.');
       const miss = missingDoc('livreur'); if (miss) return setError(form, miss);
-      if (!v('c-iban')) return setError(form, payoutMethod() === 'bank' ? 'IBAN ou numéro de compte obligatoire.' : 'Numéro du portefeuille mobile obligatoire.');
+      if (!v('c-iban')) return setError(form, payoutMethod() === 'bank' ? 'IBAN ou numéro de compte obligatoire.' : 'Numéro MVola obligatoire.');
       if (!$('c-contract').checked) return setError(form, 'Lis et accepte le contrat et la charte pour envoyer ton dossier.');
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
