@@ -157,6 +157,10 @@
       <div class="stepper"><span class="on"></span><span class="on"></span><span></span></div>
       <h2>Entre le code reçu</h2>
       <p class="sub" id="code-sub">Code envoyé par SMS.</p>
+      <div id="spam-warning" role="alert" style="border:2px solid var(--error);background:#FDECEA;border-radius:12px;padding:14px;margin-bottom:20px;font-size:14px" hidden>
+        <strong style="display:block;color:var(--error);font-size:16px;margin-bottom:4px">⚠️ Regarde dans tes spams !</strong>
+        Aux Comores, le SMS peut arriver dans les messages indésirables. Ouvre ton application Messages et regarde le dossier « Spam » ou « Indésirables ». Il peut mettre quelques minutes à arriver.
+      </div>
       <label for="code">Code à 6 chiffres</label>
       <input type="text" id="code" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required />
       <button class="btn" type="submit">Vérifier</button>
@@ -378,6 +382,7 @@
       busy(form, false);
       if (error) return setError(form, frError(error));
       $('code-sub').textContent = `Code envoyé par SMS au ${phoneE164}.`;
+      $('spam-warning').hidden = !phoneE164.startsWith('+269');
       show('step-code');
       $('code').focus();
     });
