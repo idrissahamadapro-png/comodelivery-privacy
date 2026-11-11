@@ -61,7 +61,7 @@
 
     label { display: block; font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
     label .opt { font-weight: 400; color: var(--muted); }
-    input[type=text], input[type=tel], input[type=email], select {
+    input[type=text], input[type=tel], input[type=email], input[type=password], select {
       width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border-radius: 12px;
       border: 1px solid var(--border); background: var(--bg); color: var(--text);
     }
@@ -106,6 +106,12 @@
     .btn:hover { background: var(--volcan-dark); }
     .btn:disabled { opacity: .6; cursor: wait; }
     .btn.ghost { background: transparent; color: var(--text); box-shadow: none; border: 1px solid var(--border); }
+    .btn.ghost:hover { background: var(--bg); }
+    .btn.google { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
+    .btn.google svg { width: 20px; height: 20px; }
+    .or { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: var(--muted); font-size: 13px; }
+    .or::before, .or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .center { text-align: center; }
     .linkbtn { background: none; border: 0; font: inherit; font-size: 14px; color: var(--volcan); cursor: pointer; text-decoration: underline; margin-top: 14px; }
     .error { color: var(--error); font-size: 14px; margin-top: 14px; }
     .error:empty { display: none; }
@@ -150,6 +156,34 @@
       </div>
       <button class="btn" type="submit">Recevoir le code</button>
       <p class="error" role="alert"></p>
+      <div class="or">ou</div>
+      <button class="btn ghost google" type="button" id="google-btn">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+        Continuer avec Google
+      </button>
+      <button class="btn ghost" type="button" id="use-email" style="margin-top:12px">Avec mon adresse e-mail</button>
+    </form>
+
+    <!-- 1 bis. E-mail + mot de passe (comme dans l'app) -->
+    <form class="card" id="step-email" hidden>
+      <div class="stepper"><span class="on"></span><span></span><span></span></div>
+      <h2 id="email-title">Crée ton compte</h2>
+      <p class="sub" id="email-sub">Ton e-mail et ton mot de passe serviront aussi à te connecter dans l'app.</p>
+      <label for="em">Adresse e-mail</label>
+      <input type="email" id="em" autocomplete="email" required />
+      <label for="pw">Mot de passe</label>
+      <input type="password" id="pw" autocomplete="new-password" minlength="8" required />
+      <p class="hint" id="pw-hint">8 caractères minimum.</p>
+      <div id="pw2-box">
+        <label for="pw2">Confirme le mot de passe</label>
+        <input type="password" id="pw2" autocomplete="new-password" />
+      </div>
+      <button class="btn" type="submit" id="email-submit">Créer mon compte</button>
+      <p class="error" role="alert"></p>
+      <div class="center">
+        <button class="linkbtn" type="button" id="email-toggle">J'ai déjà un compte</button><br />
+        <button class="linkbtn" type="button" id="back-phone">Utiliser mon numéro à la place</button>
+      </div>
     </form>
 
     <!-- 2. Code -->
@@ -212,6 +246,11 @@
 
       <label for="c-name">Nom complet</label>
       <input type="text" id="c-name" autocomplete="name" required />
+      <div id="c-phone-box" hidden>
+        <label for="c-phone">Ton numéro de téléphone</label>
+        <input type="tel" id="c-phone" autocomplete="tel" placeholder="+269 3XX XX XX" />
+        <p class="hint">Pour qu'on puisse te joindre, et les clients pendant une livraison.</p>
+      </div>
       <label>Véhicule</label>
       <div class="chips" role="radiogroup" aria-label="Véhicule">
         <label><input type="radio" name="vehicle" value="scooter" checked /><span>🛵 Scooter</span></label>
@@ -304,15 +343,17 @@
     const KIND = { restaurant: 'restaurant', livreur: 'courier' };
 
     const $ = (id) => document.getElementById(id);
-    const steps = ['step-phone', 'step-code', 'form-restaurant', 'form-livreur', 'step-done'];
+    const steps = ['step-phone', 'step-email', 'step-code', 'form-restaurant', 'form-livreur', 'step-done'];
     let role = new URLSearchParams(location.search).get('role');
     if (role !== 'restaurant' && role !== 'livreur') role = null;
     let phoneE164 = null;
+    let codeMode = 'sms'; // 'sms' (numéro) ou 'email' (confirmation de l'adresse, comme dans l'app)
+    let emailSignup = true;
     let coords = null;
 
     function show(id) {
       steps.forEach(s => $(s).hidden = s !== id);
-      $('roles').hidden = !(id === 'step-phone' || id === 'step-code');
+      $('roles').hidden = !['step-phone', 'step-email', 'step-code'].includes(id);
       scrollTo({ top: 0 });
     }
     function setError(form, msg) { form.querySelector('.error').textContent = msg || ''; }
@@ -326,6 +367,10 @@
       if (/rate limit|security purposes|over_sms_send_rate/i.test(m)) return 'Trop de tentatives. Attends une minute avant de redemander un code.';
       if (/expired|invalid/i.test(m) && /token|otp/i.test(m)) return 'Code incorrect ou expiré.';
       if (/phone/i.test(m) && /invalid/i.test(m)) return 'Numéro de téléphone invalide.';
+      if (/already registered|user already/i.test(m)) return 'Cet e-mail a déjà un compte. Connecte-toi avec ton mot de passe.';
+      if (/invalid login credentials|invalid_grant/i.test(m)) return 'E-mail ou mot de passe incorrect.';
+      if (/password/i.test(m) && /(weak|short|least)/i.test(m)) return 'Mot de passe trop faible : 8 caractères minimum.';
+      if (/provider is not enabled/i.test(m)) return 'Connexion Google indisponible pour le moment. Utilise ton numéro ou ton e-mail.';
       return 'Une erreur est survenue : ' + m;
     }
 
@@ -381,12 +426,96 @@
       const { error } = await sb.auth.signInWithOtp({ phone: phoneE164, options: { channel: 'sms' } });
       busy(form, false);
       if (error) return setError(form, frError(error));
+      codeMode = 'sms';
       $('code-sub').textContent = `Code envoyé par SMS au ${phoneE164}.`;
       $('spam-warning').hidden = !phoneE164.startsWith('+269');
+      $('change-phone').textContent = 'Changer de numéro';
       show('step-code');
       $('code').focus();
     });
-    $('change-phone').addEventListener('click', () => show('step-phone'));
+    $('change-phone').addEventListener('click', async () => {
+      if (codeMode === 'email') await sb.auth.signOut();
+      show(codeMode === 'email' ? 'step-email' : 'step-phone');
+    });
+
+    // ---------- 1 bis. Google ----------
+    $('google-btn').addEventListener('click', async () => {
+      const form = $('step-phone');
+      if (!role) return setError(form, 'Choisis d\'abord : restaurant ou livreur.');
+      const { error } = await sb.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: location.origin + '/inscription/?role=' + role },
+      });
+      if (error) setError(form, frError(error));
+    });
+
+    // ---------- 1 ter. E-mail + mot de passe ----------
+    function setEmailMode(signup) {
+      emailSignup = signup;
+      $('email-title').textContent = signup ? 'Crée ton compte' : 'Connecte-toi';
+      $('email-sub').textContent = signup
+        ? "Ton e-mail et ton mot de passe serviront aussi à te connecter dans l'app."
+        : "Avec l'e-mail et le mot de passe de ton compte ComoDelivery.";
+      $('pw2-box').hidden = !signup;
+      $('pw-hint').hidden = !signup;
+      $('pw').autocomplete = signup ? 'new-password' : 'current-password';
+      $('email-submit').textContent = signup ? 'Créer mon compte' : 'Me connecter';
+      delete $('email-submit').dataset.label;
+      $('email-toggle').textContent = signup ? "J'ai déjà un compte" : 'Créer un compte';
+      setError($('step-email'), '');
+    }
+    $('use-email').addEventListener('click', () => {
+      if (!role) return setError($('step-phone'), 'Choisis d\'abord : restaurant ou livreur.');
+      setEmailMode(true); show('step-email'); $('em').focus();
+    });
+    $('email-toggle').addEventListener('click', () => setEmailMode(!emailSignup));
+    $('back-phone').addEventListener('click', () => show('step-phone'));
+
+    $('step-email').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      if (!role) return setError(form, 'Choisis d\'abord : restaurant ou livreur.');
+      const email = $('em').value.trim().toLowerCase();
+      const pw = $('pw').value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError(form, 'Adresse e-mail invalide.');
+      if (pw.length < (emailSignup ? 8 : 6)) return setError(form, emailSignup ? 'Le mot de passe doit faire au moins 8 caractères.' : 'Mot de passe incorrect.');
+      if (emailSignup && pw !== $('pw2').value) return setError(form, 'Les mots de passe ne correspondent pas.');
+      setError(form, ''); busy(form, true, emailSignup ? 'Création du compte…' : 'Connexion…');
+      try {
+        const { data, error } = emailSignup
+          ? await sb.auth.signUp({ email, password: pw })
+          : await sb.auth.signInWithPassword({ email, password: pw });
+        if (error) throw error;
+        // signUp sur un e-mail déjà inscrit : Supabase renvoie un compte sans identité.
+        if (emailSignup && data.user && (data.user.identities || []).length === 0) {
+          setEmailMode(false);
+          return setError(form, 'Cet e-mail a déjà un compte. Connecte-toi avec ton mot de passe.');
+        }
+        if (!data.session) throw new Error('Connexion impossible, réessaie.');
+        await ensureProfile(data.user);
+        route(data.user);
+      } catch (err) {
+        setError(form, frError(err));
+      } finally {
+        busy(form, false);
+      }
+    });
+
+    // Adresse e-mail pas encore confirmée : code à 6 chiffres envoyé par mail (même fonction que l'app).
+    // Renvoie true si l'adresse est déjà confirmée (ou compte Google).
+    async function emailVerified() {
+      const { data } = await sb.functions.invoke('email-verification', { body: { action: 'send' } });
+      return !!(data && data.verified);
+    }
+    async function askEmailCode(user) {
+      codeMode = 'email';
+      $('code-sub').textContent = `Code envoyé par e-mail à ${user.email}. Pense à regarder dans tes spams.`;
+      $('spam-warning').hidden = true;
+      $('change-phone').textContent = 'Changer d\'adresse e-mail';
+      $('code').value = '';
+      show('step-code');
+      $('code').focus();
+    }
 
     // ---------- 2. Code ----------
     $('step-code').addEventListener('submit', async (e) => {
@@ -395,6 +524,17 @@
       const token = $('code').value.replace(/\D/g, '');
       if (token.length !== 6) return setError(form, 'Le code fait 6 chiffres.');
       setError(form, ''); busy(form, true, 'Vérification…');
+      if (codeMode === 'email') {
+        const { data, error } = await sb.functions.invoke('email-verification', { body: { action: 'verify', code: token } });
+        busy(form, false);
+        if (!(data && data.verified)) {
+          let msg = data && data.error;
+          if (!msg && error && error.context) { try { msg = (await error.context.json()).error; } catch (_) {} }
+          return setError(form, msg || 'Code incorrect ou expiré.');
+        }
+        const { data: { user } } = await sb.auth.getUser();
+        return route(user, true);
+      }
       const { data, error } = await sb.auth.verifyOtp({ phone: phoneE164, token, type: 'sms' });
       busy(form, false);
       if (error) return setError(form, frError(error));
@@ -411,14 +551,16 @@
     }
 
     // Affiche le dossier existant s'il y en a un, sinon le formulaire.
-    async function route(user) {
+    async function route(user, emailOk) {
       if (!role) { show('step-phone'); return; }
+      // Compte e-mail (pas numéro) : l'adresse doit être confirmée, comme dans l'app.
+      if (!user.phone && user.email && !emailOk && !(await emailVerified())) return askEmailCode(user);
       const { data } = await sb.from(TABLE[role]).select('status, rejection_reason')
         .eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle();
       if (data && data.status !== 'rejected') {
         $('done-title').textContent = data.status === 'approved' ? 'Ton dossier est validé !' : 'Dossier en cours de vérification';
         $('done-text').textContent = data.status === 'approved'
-          ? "Bienvenue chez ComoDelivery ! Connecte-toi dans l'app avec ce numéro pour accéder à ton espace."
+          ? "Bienvenue chez ComoDelivery ! Connecte-toi dans l'app " + loginHint(user) + ' pour accéder à ton espace.'
           : 'Tu as déjà envoyé un dossier. Notre équipe le vérifie et te répond par SMS.';
         show('step-done');
         return;
@@ -430,12 +572,26 @@
       const prof = await sb.from('profiles').select('full_name, phone').eq('id', user.id).maybeSingle();
       const p = prof.data || {};
       if (role === 'restaurant') {
-        if (!$('r-manager').value) $('r-manager').value = p.full_name || '';
+        if (!$('r-manager').value) $('r-manager').value = p.full_name || (user.user_metadata && user.user_metadata.full_name) || '';
         if (!$('r-phone').value) $('r-phone').value = p.phone || '';
-      } else if (!$('c-name').value) {
-        $('c-name').value = p.full_name || '';
+        if (!$('r-email').value) $('r-email').value = user.email || '';
+      } else {
+        if (!$('c-name').value) $('c-name').value = p.full_name || (user.user_metadata && user.user_metadata.full_name) || '';
+        $('c-phone-box').hidden = !!p.phone; // inscrit par e-mail / Google : on demande le numéro
       }
       show('form-' + role);
+    }
+    // Rappelle avec quoi se connecter dans l'app (un compte = un identifiant).
+    function loginHint(user) {
+      const prov = (user.app_metadata && user.app_metadata.provider) || '';
+      if (prov === 'google') return 'avec « Continuer avec Google » (' + user.email + ')';
+      if (!user.phone && user.email) return 'avec ton e-mail ' + user.email + ' et ton mot de passe';
+      return 'avec ce numéro';
+    }
+    function doneText(user, mail) {
+      return 'Notre équipe vérifie ton dossier et te répond sous 48 h'
+        + (mail ? '. Un e-mail de confirmation vient de partir à ' + mail : ' par SMS')
+        + '. Dans l\'app, connecte-toi ' + loginHint(user) + '.';
     }
 
     // ---------- GPS ----------
@@ -486,7 +642,7 @@
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
-        if (!user) throw new Error('Session expirée, recommence la vérification du numéro.');
+        if (!user) throw new Error('Session expirée, reconnecte-toi.');
         const docs = await uploadDocs('restaurant', user.id);
         const { error } = await sb.from('restaurant_applications').insert({
           user_id: user.id,
@@ -506,7 +662,7 @@
         if (error) throw error;
         await sb.from('profiles').update({ full_name: v('r-manager') }).eq('id', user.id).is('full_name', null);
         $('done-title').textContent = 'Dossier envoyé !';
-        $('done-text').textContent = 'Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.';
+        $('done-text').textContent = doneText(user, v('r-email') || user.email);
         show('step-done');
       } catch (err) {
         setError(form, frError(err));
@@ -530,13 +686,16 @@
       const form = e.currentTarget;
       const v = (id) => $(id).value.trim();
       if (!v('c-name')) return setError(form, 'Nom complet obligatoire.');
+      const needPhone = !$('c-phone-box').hidden;
+      const cPhone = v('c-phone').replace(/[^\d+]/g, '');
+      if (needPhone && cPhone.replace(/\D/g, '').length < 6) return setError(form, 'Ton numéro de téléphone est obligatoire.');
       const miss = missingDoc('livreur'); if (miss) return setError(form, miss);
       if (!v('c-iban')) return setError(form, payoutMethod() === 'bank' ? 'IBAN ou numéro de compte obligatoire.' : 'Numéro MVola obligatoire.');
       if (!$('c-contract').checked) return setError(form, 'Lis et accepte le contrat et la charte pour envoyer ton dossier.');
       setError(form, ''); busy(form, true, 'Envoi du dossier…');
       try {
         const { data: { user } } = await sb.auth.getUser();
-        if (!user) throw new Error('Session expirée, recommence la vérification du numéro.');
+        if (!user) throw new Error('Session expirée, reconnecte-toi.');
         const docs = await uploadDocs('livreur', user.id);
         const { error } = await sb.from('courier_applications').insert({
           user_id: user.id,
@@ -553,8 +712,9 @@
         });
         if (error) throw error;
         await sb.from('profiles').update({ full_name: v('c-name') }).eq('id', user.id).is('full_name', null);
+        if (needPhone) await sb.from('profiles').update({ phone: cPhone }).eq('id', user.id).is('phone', null);
         $('done-title').textContent = 'Dossier envoyé !';
-        $('done-text').textContent = 'Notre équipe vérifie ton dossier et te répond par SMS sous 48 h.';
+        $('done-text').textContent = doneText(user, user.email);
         show('step-done');
       } catch (err) {
         setError(form, frError(err));
@@ -569,7 +729,8 @@
     (async () => {
       if (role) selectRole(role);
       const { data } = await sb.auth.getSession();
-      if (data.session) route(data.session.user); else show('step-phone');
+      // Retour de Google : le profil est créé ici, comme après le code SMS.
+      if (data.session) { await ensureProfile(data.session.user); route(data.session.user); } else show('step-phone');
     })();
   </script>
 </body>
