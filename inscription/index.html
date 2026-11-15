@@ -144,11 +144,11 @@
     <form class="card" id="step-phone" hidden>
       <div class="stepper"><span class="on"></span><span></span><span></span></div>
       <h2>Ton numéro de téléphone</h2>
-      <div role="alert" style="border:2px solid var(--error);background:#FDECEA;border-radius:12px;padding:14px;margin-bottom:20px;font-size:14px">
-        <strong style="display:block;color:var(--error);font-size:16px;margin-bottom:4px">⚠️ Aux Comores, évite le numéro pour l'instant</strong>
-        La connexion par SMS n'est pas fiable aux Comores en ce moment : le code arrive mal, ou pas du tout. Inscris-toi plutôt avec ton adresse e-mail, Google ou Apple.
+      <div style="border:2px solid #2E7D5B;background:#E8F3EC;border-radius:12px;padding:14px;margin-bottom:20px;font-size:14px">
+        <strong style="display:block;color:#2E7D5B;font-size:16px;margin-bottom:4px">Aux Comores, ton code arrive sur WhatsApp</strong>
+        Pour un numéro +269, on t'envoie le code par WhatsApp, pas par SMS. Pas de WhatsApp sur ce numéro ? Inscris-toi avec ton adresse e-mail, Google ou Apple.
       </div>
-      <p class="sub">On t'envoie un code par SMS pour vérifier que c'est bien toi. Ce numéro sera aussi ton identifiant dans l'app.</p>
+      <p class="sub">On t'envoie un code (WhatsApp aux Comores, SMS ailleurs) pour vérifier que c'est bien toi. Ce numéro sera aussi ton identifiant dans l'app.</p>
       <label for="cc">Numéro</label>
       <div class="row">
         <select id="cc" aria-label="Indicatif">
@@ -199,10 +199,6 @@
       <div class="stepper"><span class="on"></span><span class="on"></span><span></span></div>
       <h2>Entre le code reçu</h2>
       <p class="sub" id="code-sub">Code envoyé par SMS.</p>
-      <div id="spam-warning" role="alert" style="border:2px solid var(--error);background:#FDECEA;border-radius:12px;padding:14px;margin-bottom:20px;font-size:14px" hidden>
-        <strong style="display:block;color:var(--error);font-size:16px;margin-bottom:4px">⚠️ Regarde dans tes spams !</strong>
-        Aux Comores, le SMS arrive très souvent dans les messages indésirables. Ouvre ton application Messages et regarde le dossier « Spam » ou « Indésirables » : ton code est très probablement là.
-      </div>
       <label for="code">Code à 6 chiffres</label>
       <input type="text" id="code" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required />
       <button class="btn" type="submit">Vérifier</button>
@@ -431,18 +427,13 @@
       if (digits.length < 6) return setError(form, 'Numéro de téléphone invalide.');
       phoneE164 = $('cc').value + digits;
       setError(form, ''); busy(form, true, 'Envoi du code…');
-      // SMS coupé pour le +269 (arrivent mal, coûtent cher), sauf numéros autorisés à la main.
-      const { data: allowed } = await sb.rpc('sms_otp_allowed', { p_phone: phoneE164 });
-      if (allowed === false) {
-        busy(form, false);
-        return setError(form, "Les SMS arrivent mal aux Comores pour l'instant. Reviens en arrière et inscris-toi avec ton adresse e-mail, Google ou Apple.");
-      }
-      const { error } = await sb.auth.signInWithOtp({ phone: phoneE164, options: { channel: 'sms' } });
+      // Comores : code par WhatsApp (SMS +269 peu fiables et chers).
+      const wa = phoneE164.startsWith('+269');
+      const { error } = await sb.auth.signInWithOtp({ phone: phoneE164, options: { channel: wa ? 'whatsapp' : 'sms' } });
       busy(form, false);
       if (error) return setError(form, frError(error));
       codeMode = 'sms';
-      $('code-sub').textContent = `Code envoyé par SMS au ${phoneE164}.`;
-      $('spam-warning').hidden = !phoneE164.startsWith('+269');
+      $('code-sub').textContent = `Code envoyé ${wa ? 'sur WhatsApp' : 'par SMS'} au ${phoneE164}.`;
       $('change-phone').textContent = 'Changer de numéro';
       show('step-code');
       $('code').focus();
@@ -523,7 +514,6 @@
     async function askEmailCode(user) {
       codeMode = 'email';
       $('code-sub').textContent = `Code envoyé par e-mail à ${user.email}. Pense à regarder dans tes spams.`;
-      $('spam-warning').hidden = true;
       $('change-phone').textContent = 'Changer d\'adresse e-mail';
       $('code').value = '';
       show('step-code');
